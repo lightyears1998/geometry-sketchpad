@@ -9,7 +9,10 @@ public:
 	virtual ~Shape() = default;
 
 	// 序列化实现
-	void Serialize(CArchive &ar) = 0;
+	virtual void Serialize(CArchive &ar) = 0;
+
+	// 绘图函数
+	virtual void OnDraw(CDC* pDC) = 0;
 
 	// 计算面积
 	virtual double GetArea() = 0;
@@ -26,6 +29,7 @@ public:
 	double x, y;
 
 	virtual void Serialize(CArchive &ar);
+	virtual void OnDraw(CDC* pDC);
 	virtual double GetArea();
 	virtual double GetPerimeter();
 };

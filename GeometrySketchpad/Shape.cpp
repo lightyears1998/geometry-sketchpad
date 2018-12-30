@@ -15,6 +15,11 @@ void Point::Serialize(CArchive &ar)
 	}
 }
 
+void Point::OnDraw(CDC* pDC)
+{
+	
+}
+
 double Point::GetArea()
 {
 	return 0.0;  // 点的面积为0
