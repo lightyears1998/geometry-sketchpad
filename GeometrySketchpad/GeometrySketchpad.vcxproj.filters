@@ -39,7 +39,7 @@
     <ClInclude Include="Shape.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Array.h">
+    <ClInclude Include="ShapeArray.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -60,6 +60,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Shape.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeArray.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

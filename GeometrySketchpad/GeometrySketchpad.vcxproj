@@ -191,7 +191,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Array.h" />
+    <ClInclude Include="ShapeArray.h" />
     <ClInclude Include="GeometrySketchpad.h" />
     <ClInclude Include="GeometrySketchpadDoc.h" />
     <ClInclude Include="GeometrySketchpadView.h" />
@@ -207,6 +207,7 @@
     <ClCompile Include="GeometrySketchpadView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="ShapeArray.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
