@@ -191,11 +191,13 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Array.h" />
     <ClInclude Include="GeometrySketchpad.h" />
     <ClInclude Include="GeometrySketchpadDoc.h" />
     <ClInclude Include="GeometrySketchpadView.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Shape.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -204,6 +206,7 @@
     <ClCompile Include="GeometrySketchpadDoc.cpp" />
     <ClCompile Include="GeometrySketchpadView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="Shape.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

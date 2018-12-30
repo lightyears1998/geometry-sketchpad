@@ -72,8 +72,8 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 	
 	// 在此处通过修改
 	// CREATESTRUCT cs 来修改窗口类或样式
-	cs.style &= ~FWS_ADDTOTITLE;
-	cs.lpszName = TEXT("软件171");
+
+	// 注意到默认的窗口标题取自字符串资源 IDR_MAINFRAME 的第一个子串
 
 	return TRUE;
 }
