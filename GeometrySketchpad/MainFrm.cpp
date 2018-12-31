@@ -3,7 +3,10 @@
 
 #include "stdafx.h"
 #include "GeometrySketchpad.h"
+#include "GeometrySketchpadDoc.h"
 
+#include "Shape.h"
+#include "ShapeArray.h"
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -16,6 +19,7 @@ IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
 
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
+	ON_COMMAND(ID_DEBUG, &CMainFrame::OnDebug)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -95,3 +99,14 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 // CMainFrame 消息处理程序
 
+
+
+void CMainFrame::OnDebug()
+{
+	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
+	ShapeArray & arr = *(doc->arr);
+	for (int i = 0; i < 128; ++i) {
+		arr.Add(new Point(2 * i, 2 * i));
+	}
+	Invalidate();
+}

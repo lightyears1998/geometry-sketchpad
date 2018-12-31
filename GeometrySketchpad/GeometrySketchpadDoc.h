@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "ShapeArray.h"
+
 
 class CGeometrySketchpadDoc : public CDocument
 {
@@ -12,6 +14,7 @@ protected: // 仅从序列化创建
 
 // 特性
 public:
+	ShapeArray * arr;
 
 // 操作
 public:

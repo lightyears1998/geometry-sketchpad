@@ -53,6 +53,11 @@ ShapeArray::~ShapeArray()
 }
 
 
+size_t ShapeArray::GetCount()
+{
+	return count;
+}
+
 Shape * ShapeArray::GetAt(size_t index)
 {
 	if (index >= 0 && index < count)  // 检查边界条件

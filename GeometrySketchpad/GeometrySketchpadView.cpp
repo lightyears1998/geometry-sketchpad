@@ -45,14 +45,18 @@ BOOL CGeometrySketchpadView::PreCreateWindow(CREATESTRUCT& cs)
 
 // CGeometrySketchpadView 绘图
 
-void CGeometrySketchpadView::OnDraw(CDC* /*pDC*/)
+void CGeometrySketchpadView::OnDraw(CDC* pDC)
 {
 	CGeometrySketchpadDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
 
-	// TODO: 在此处为本机数据添加绘制代码
+	ShapeArray & arr = *(GetDocument()->arr);
+	size_t count = arr.GetCount();
+	for (size_t i = 0; i < count; ++i) {
+		arr.GetAt(i)->OnDraw(pDC);
+	}
 }
 
 

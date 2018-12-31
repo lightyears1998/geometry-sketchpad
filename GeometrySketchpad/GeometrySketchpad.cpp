@@ -150,6 +150,3 @@ void CGeometrySketchpadApp::OnAppAbout()
 }
 
 // CGeometrySketchpadApp 消息处理程序
-
-
-

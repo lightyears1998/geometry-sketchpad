@@ -3,6 +3,7 @@
 
 #include <cmath>
 
+
 void Point::Serialize(CArchive &ar)
 {
 	CObject::Serialize(ar);
@@ -17,7 +18,7 @@ void Point::Serialize(CArchive &ar)
 
 void Point::OnDraw(CDC* pDC)
 {
-	
+	pDC->SetPixelV(int(x), int(y), RGB(0, 0, 0));
 }
 
 double Point::GetArea()

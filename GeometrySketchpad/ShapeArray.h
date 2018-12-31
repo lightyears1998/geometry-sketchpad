@@ -13,6 +13,7 @@ public:
 	DECLARE_SERIAL(ShapeArray);
 	virtual void Serialize(CArchive &ar);
 
+	size_t GetCount();
 	Shape * GetAt(size_t);
 	void Add(Shape * shape);
 

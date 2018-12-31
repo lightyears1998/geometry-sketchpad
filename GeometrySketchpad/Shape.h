@@ -27,6 +27,9 @@ class Point : public Shape
 {
 public:
 	double x, y;
+	
+	Point() = default;
+	Point(double x, double y) : x(x), y(y) {};
 
 	virtual void Serialize(CArchive &ar);
 	virtual void OnDraw(CDC* pDC);

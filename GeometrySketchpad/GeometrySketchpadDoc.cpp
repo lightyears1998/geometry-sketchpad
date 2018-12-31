@@ -43,6 +43,7 @@ BOOL CGeometrySketchpadDoc::OnNewDocument()
 
 	// TODO: 在此添加重新初始化代码
 	// (SDI 文档将重用该文档)
+	arr = new ShapeArray();
 
 	return TRUE;
 }
@@ -54,13 +55,13 @@ BOOL CGeometrySketchpadDoc::OnNewDocument()
 
 void CGeometrySketchpadDoc::Serialize(CArchive& ar)
 {
-	if (ar.IsStoring())
+	if (ar.IsStoring())  // 储存过程
 	{
-		// TODO: 在此添加存储代码
+		arr->Serialize(ar);
 	}
-	else
+	else  // 加载过程
 	{
-		// TODO: 在此添加加载代码
+		arr->Serialize(ar);
 	}
 }
 
