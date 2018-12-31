@@ -11,6 +11,7 @@ public:
 	Point() : x(0), y(0) {};
 	Point(double x, double y) : x(x), y(y) {};
 	Point(const Point & pt) : x(pt.x), y(pt.y) {};
+	Point(const CPoint & pt) : x(pt.x), y(pt.y) {};
 
 	Point& operator =(const Point & pt);
 
