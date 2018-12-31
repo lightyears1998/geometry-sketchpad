@@ -10,12 +10,18 @@
 #define IDC_EDIT_X                      1000
 #define IDC_EDIT_Y                      1001
 #define ID_DRAW_POINT                   32772
+#define ID_MOUSE_DRAW_POINT             32772
 #define ID_DRAW_LINE                    32774
+#define ID_MOUSE_DRAW_LINE              32774
 #define ID_MOUSE_SELECTON               32777
 #define ID_BUTTON32780                  32780
+#define ID_MOUSE_DRAW_CRICLE            32780
 #define ID_BUTTON32781                  32781
+#define ID_MOUSE_DRAW_RECTANGLE         32781
 #define ID_BUTTON32782                  32782
+#define ID_MOUSE_DRAW_TRIANGLE          32782
 #define ID_BUTTON32783                  32783
+#define ID_MOUSE_DRAW_PARALLELOGRAM     32783
 #define ID_32784                        32784
 #define ID_32785                        32785
 #define ID_32786                        32786
@@ -23,13 +29,19 @@
 #define ID_ADD_SEGMENT                  32788
 #define ID_32789                        32789
 #define ID_DEBUG                        32790
+#define ID_32791                        32791
+#define ID_32792                        32792
+#define ID_32793                        32793
+#define ID_32794                        32794
+#define ID_32795                        32795
+#define ID_MOUSE_DRAW_CIRCLE            32796
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        313
-#define _APS_NEXT_COMMAND_VALUE         32791
+#define _APS_NEXT_COMMAND_VALUE         32797
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

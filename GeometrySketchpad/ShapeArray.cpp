@@ -92,3 +92,9 @@ void ShapeArray::Remove(size_t index)
 		--count;  // 持有对象的总数减一
 	}
 }
+
+void ShapeArray::Empty()
+{
+	for (size_t i = 0; i < count; ++i)
+		Remove(i);
+}

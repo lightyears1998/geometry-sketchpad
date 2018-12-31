@@ -13,6 +13,11 @@ protected: // 仅从序列化创建
 // 特性
 public:
 	CGeometrySketchpadDoc* GetDocument() const;
+	
+	enum MouseState : unsigned {
+		Selection, DrawPoint, DrawLine, DrawTriangle,
+		DrawParallelogram, DrawRectangle, DrawCircle
+	} mouse_state = MouseState::Selection;
 
 // 操作
 public:
@@ -36,6 +41,9 @@ protected:
 // 生成的消息映射函数
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	void ChangeMouseState(MouseState state);
 };
 
 #ifndef _DEBUG  // GeometrySketchpadView.cpp 中的调试版本

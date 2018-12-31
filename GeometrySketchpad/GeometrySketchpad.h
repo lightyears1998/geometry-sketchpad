@@ -19,7 +19,6 @@ class CGeometrySketchpadApp : public CWinApp
 public:
 	CGeometrySketchpadApp() noexcept;
 
-
 // 重写
 public:
 	virtual BOOL InitInstance();

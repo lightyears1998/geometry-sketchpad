@@ -21,6 +21,7 @@
 IMPLEMENT_DYNCREATE(CGeometrySketchpadView, CView)
 
 BEGIN_MESSAGE_MAP(CGeometrySketchpadView, CView)
+	ON_WM_LBUTTONDOWN()
 END_MESSAGE_MAP()
 
 // CGeometrySketchpadView 构造/析构
@@ -82,3 +83,18 @@ CGeometrySketchpadDoc* CGeometrySketchpadView::GetDocument() const // 非调试�
 
 
 // CGeometrySketchpadView 消息处理程序
+
+
+void CGeometrySketchpadView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	CMap<MouseState, MouseState, void *(CPoint), void *(CPoint)> map;
+
+	CView::OnLButtonDown(nFlags, point);
+}
+
+
+
+void CGeometrySketchpadView::ChangeMouseState(MouseState state)
+{
+	// TODO: Add your implementation code here.
+}

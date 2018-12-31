@@ -28,6 +28,9 @@ public:
 	// 移除指定位置Shape对象
 	void Remove(size_t index);
 
+	// 清空容器
+	void Empty();
+
 protected:
 	Shape ** arr;  // 指向储存Shape对象指针的容器的指针
 	size_t count = 0;  // 已储存对象指针的数量

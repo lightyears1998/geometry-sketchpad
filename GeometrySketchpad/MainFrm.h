@@ -40,6 +40,13 @@ protected:
 public:
 	afx_msg void OnDebug();
 	afx_msg void OnAddPoint();
+	afx_msg void OnMouseSelecton();
+	afx_msg void OnMouseDrawTriangle();
+	afx_msg void OnMouseDrawRectangle();
+	afx_msg void OnMouseDrawPoint();
+	afx_msg void OnMouseDrawParallelogram();
+	afx_msg void OnMouseDrawLine();
+	afx_msg void OnMouseDrawCircle();
 };
 
 

@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "GeometrySketchpad.h"
 #include "GeometrySketchpadDoc.h"
+#include "GeometrySketchpadView.h"
 
 #include "DialogAddPoint.h"
 
@@ -27,6 +28,13 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
 	ON_COMMAND(ID_DEBUG, &CMainFrame::OnDebug)
 	ON_COMMAND(ID_ADD_POINT, &CMainFrame::OnAddPoint)
+	ON_COMMAND(ID_MOUSE_SELECTON, &CMainFrame::OnMouseSelecton)
+	ON_COMMAND(ID_MOUSE_DRAW_TRIANGLE, &CMainFrame::OnMouseDrawTriangle)
+	ON_COMMAND(ID_MOUSE_DRAW_RECTANGLE, &CMainFrame::OnMouseDrawRectangle)
+	ON_COMMAND(ID_MOUSE_DRAW_POINT, &CMainFrame::OnMouseDrawPoint)
+	ON_COMMAND(ID_MOUSE_DRAW_PARALLELOGRAM, &CMainFrame::OnMouseDrawParallelogram)
+	ON_COMMAND(ID_MOUSE_DRAW_LINE, &CMainFrame::OnMouseDrawLine)
+	ON_COMMAND(ID_MOUSE_DRAW_CIRCLE, &CMainFrame::OnMouseDrawCircle)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -151,4 +159,53 @@ void CMainFrame::OnAddPoint()
 		doc->shape_array->Add(pt);
 	}
 	Invalidate();
+}
+
+
+void CMainFrame::OnMouseSelecton()
+{
+	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
+	view->mouse_state = CGeometrySketchpadView::MouseState::Selection;
+}
+
+
+void CMainFrame::OnMouseDrawTriangle()
+{
+	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
+	view->mouse_state = CGeometrySketchpadView::MouseState::DrawTriangle;
+}
+
+
+void CMainFrame::OnMouseDrawRectangle()
+{
+	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
+	view->mouse_state = CGeometrySketchpadView::MouseState::DrawRectangle;
+}
+
+
+void CMainFrame::OnMouseDrawPoint()
+{
+	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
+	view->mouse_state = CGeometrySketchpadView::MouseState::DrawPoint;
+}
+
+
+void CMainFrame::OnMouseDrawParallelogram()
+{
+	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
+	view->mouse_state = CGeometrySketchpadView::MouseState::DrawParallelogram;
+}
+
+
+void CMainFrame::OnMouseDrawLine()
+{
+	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
+	view->mouse_state = CGeometrySketchpadView::MouseState::DrawLine;
+}
+
+
+void CMainFrame::OnMouseDrawCircle()
+{
+	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
+	view->mouse_state = CGeometrySketchpadView::MouseState::DrawCircle;
 }
