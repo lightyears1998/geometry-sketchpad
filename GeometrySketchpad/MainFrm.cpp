@@ -16,6 +16,8 @@
 #include "Polygon.h"
 #include "MainFrm.h"
 
+#include "PtArray.hpp"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -119,7 +121,7 @@ void CMainFrame::Dump(CDumpContext& dc) const
 void CMainFrame::OnDebug()
 {
 	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
-	ShapeArray & shape_array = *(doc->shape_array);
+	PtArray<Shape> & shape_array = doc->shape_array;
 
 	// 测试添加功能
 	for (int i = 0; i < 128; ++i) {
@@ -144,6 +146,11 @@ void CMainFrame::OnDebug()
 	pts.Add(new Point(200, 200));
 	shape_array.Add(new PolygonShape(pts));
 
+	//PtArray<Shape> arr;
+	//for (int i = 0; i < 1000; ++i) {
+	//	arr.Add(new Point(100, 100));
+	//}
+
 	Invalidate();
 }
 
@@ -156,7 +163,7 @@ void CMainFrame::OnAddPoint()
 	if (dlg.DoModal() == IDOK) {
 		double x = dlg.coordinate_x, y = dlg.coordinate_y;
 		Point * pt = new Point(x, y);
-		doc->shape_array->Add(pt);
+		doc->shape_array.Add(pt);
 	}
 	Invalidate();
 }

@@ -41,8 +41,7 @@ BOOL CGeometrySketchpadDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	delete shape_array;  // 释放旧的对象占用的空间
-	shape_array = new ShapeArray();
+	shape_array.Empty();
 
 	return TRUE;
 }
@@ -56,11 +55,20 @@ void CGeometrySketchpadDoc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())  // 储存过程
 	{
-		shape_array->Serialize(ar);
+		size_t shape_count = shape_array.GetCount();
+		ar << shape_count;
+
+		for (size_t i = 0; i < shape_count; ++i) {
+			ar.WriteObject(shape_array.GetAt(i));
+		}
 	}
 	else  // 加载过程
 	{
-		shape_array->Serialize(ar);
+		size_t shape_count; ar >> shape_count;
+		for (size_t i = 0; i < shape_count; ++i) {
+			Shape * shape = (Shape *)ar.ReadObject(nullptr);
+			shape_array.Add(shape);
+		}
 	}
 }
 

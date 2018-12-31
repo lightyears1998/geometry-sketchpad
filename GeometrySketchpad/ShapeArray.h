@@ -13,7 +13,7 @@ public:
 	ShapeArray(const ShapeArray& arr);
 	virtual ~ShapeArray();
 
-	DECLARE_SERIAL(ShapeArray);
+	DECLARE_SERIAL(ShapeArray)
 	virtual void Serialize(CArchive &ar);
 
 	// Shape对象的数量

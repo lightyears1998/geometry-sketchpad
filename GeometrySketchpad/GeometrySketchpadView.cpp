@@ -53,7 +53,7 @@ void CGeometrySketchpadView::OnDraw(CDC* pDC)
 	if (!pDoc)
 		return;
 
-	ShapeArray & shape_array = *(GetDocument()->shape_array);
+	PtArray<Shape> & shape_array = GetDocument()->shape_array;
 	size_t count = shape_array.GetCount();
 	for (size_t i = 0; i < count; ++i) {
 		shape_array.GetAt(i)->OnDraw(pDC);
@@ -87,7 +87,7 @@ CGeometrySketchpadDoc* CGeometrySketchpadView::GetDocument() const // 非调试�
 
 void CGeometrySketchpadView::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	CMap<MouseState, MouseState, void *(CPoint), void *(CPoint)> map;
+	// CMap<MouseState, MouseState, void *(CPoint), void *(CPoint)> map;
 
 	CView::OnLButtonDown(nFlags, point);
 }

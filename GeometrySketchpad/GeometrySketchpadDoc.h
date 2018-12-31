@@ -4,7 +4,7 @@
 #pragma once
 
 #include "ShapeArray.h"
-
+#include "PtArray.hpp"
 
 class CGeometrySketchpadDoc : public CDocument
 {
@@ -14,7 +14,7 @@ protected: // 仅从序列化创建
 
 // 特性
 public:
-	ShapeArray * shape_array = nullptr;
+	PtArray<Shape> shape_array;
 
 // 操作
 public:
