@@ -36,5 +36,6 @@ protected:
 	size_t count = 0;  // 已储存对象指针的数量
 	size_t allocated;  // 已分配可用于储存对象指针的容器空间
 
-	void Enlarge();  // 扩大Shape对象指针储存器的容量
+	// 扩大Shape对象指针储存器的容量
+	void Enlarge();
 };
