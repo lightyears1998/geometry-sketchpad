@@ -25,7 +25,7 @@ public:
 	void Remove(size_t index);
 
 	// 清空容器
-	void Empty();
+	void Clear();
 
 protected:
 	T ** arr;  // 指向储存T对象指针的容器的指针
@@ -99,7 +99,7 @@ inline void PtArray<T>::Remove(size_t index)
 }
 
 template <typename T>
-inline void PtArray<T>::Empty()
+inline void PtArray<T>::Clear()
 {
 	for (size_t i = GetCount(); i; --i)
 		delete arr[i - 1];

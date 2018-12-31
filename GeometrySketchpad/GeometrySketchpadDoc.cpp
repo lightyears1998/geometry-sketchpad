@@ -42,7 +42,7 @@ BOOL CGeometrySketchpadDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	shape_array.Empty();
+	shape_array.Clear();
 
 	return TRUE;
 }

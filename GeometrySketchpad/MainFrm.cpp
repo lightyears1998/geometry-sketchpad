@@ -166,47 +166,47 @@ void CMainFrame::OnAddPoint()
 void CMainFrame::OnMouseSelecton()
 {
 	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
-	view->mouse_state = CGeometrySketchpadView::MouseState::Selection;
+	view->ChangeMouseState(CGeometrySketchpadView::MouseState::Selection);
 }
 
 
 void CMainFrame::OnMouseDrawTriangle()
 {
 	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
-	view->mouse_state = CGeometrySketchpadView::MouseState::DrawTriangle;
+	view->ChangeMouseState(CGeometrySketchpadView::MouseState::DrawTriangle);
 }
 
 
 void CMainFrame::OnMouseDrawRectangle()
 {
 	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
-	view->mouse_state = CGeometrySketchpadView::MouseState::DrawRectangle;
+	view->ChangeMouseState(CGeometrySketchpadView::MouseState::DrawRectangle);
 }
 
 
 void CMainFrame::OnMouseDrawPoint()
 {
 	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
-	view->mouse_state = CGeometrySketchpadView::MouseState::DrawPoint;
+	view->ChangeMouseState(CGeometrySketchpadView::MouseState::DrawPoint);
 }
 
 
 void CMainFrame::OnMouseDrawParallelogram()
 {
 	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
-	view->mouse_state = CGeometrySketchpadView::MouseState::DrawParallelogram;
+	view->ChangeMouseState(CGeometrySketchpadView::MouseState::DrawParallelogram);
 }
 
 
 void CMainFrame::OnMouseDrawLine()
 {
 	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
-	view->mouse_state = CGeometrySketchpadView::MouseState::DrawLine;
+	view->ChangeMouseState(CGeometrySketchpadView::MouseState::DrawLine);
 }
 
 
 void CMainFrame::OnMouseDrawCircle()
 {
 	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
-	view->mouse_state = CGeometrySketchpadView::MouseState::DrawCircle;
+	view->ChangeMouseState(CGeometrySketchpadView::MouseState::DrawCircle);
 }

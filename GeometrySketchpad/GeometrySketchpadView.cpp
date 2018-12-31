@@ -13,6 +13,7 @@
 
 #include "Shape.h"
 #include "PtArray.hpp"
+#include "Point.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -25,6 +26,7 @@ IMPLEMENT_DYNCREATE(CGeometrySketchpadView, CView)
 
 BEGIN_MESSAGE_MAP(CGeometrySketchpadView, CView)
 	ON_WM_LBUTTONDOWN()
+	ON_WM_SETCURSOR()
 END_MESSAGE_MAP()
 
 // CGeometrySketchpadView 构造/析构
@@ -90,14 +92,35 @@ CGeometrySketchpadDoc* CGeometrySketchpadView::GetDocument() const // 非调试�
 
 void CGeometrySketchpadView::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	// CMap<MouseState, MouseState, void *(CPoint), void *(CPoint)> map;
+	CGeometrySketchpadDoc * doc = GetDocument();
+	PtArray<Shape> & shape_array = doc->shape_array;
 
-	CView::OnLButtonDown(nFlags, point);
+	switch (mouse_state)
+	{
+	case MouseState::DrawPoint: {
+		shape_array.Add(new Point(point.x, point.y));
+	}
+	}
+
+	Invalidate();
+	// 不需要调用基类函数
+	// CView::OnLButtonDown(nFlags, point);
 }
-
 
 
 void CGeometrySketchpadView::ChangeMouseState(MouseState state)
 {
-	// TODO: Add your implementation code here.
+	mouse_state = state;
+	previous_click.Clear();
+}
+
+
+BOOL CGeometrySketchpadView::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
+{
+	if (mouse_state != MouseState::Selection) {
+		::SetCursor(AfxGetApp()->LoadStandardCursor(IDC_CROSS));
+		return true;
+	}
+
+	return CView::OnSetCursor(pWnd, nHitTest, message);
 }

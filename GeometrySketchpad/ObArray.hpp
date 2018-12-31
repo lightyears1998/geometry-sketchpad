@@ -25,7 +25,7 @@ public:
 	void Remove(size_t index);
 
 	// 清空容器
-	void Empty();
+	void Clear();
 
 protected:
 	T * arr;  // 指向储存T对象的容器的指针
@@ -103,7 +103,7 @@ inline void ObArray<T>::Remove(size_t index)
 }
 
 template <typename T>
-inline void ObArray<T>::Empty()
+inline void ObArray<T>::Clear()
 {
 	count = 0;
 }

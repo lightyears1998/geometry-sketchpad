@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "ObArray.hpp"
+
 
 class CGeometrySketchpadView : public CView
 {
@@ -13,7 +15,8 @@ protected: // 仅从序列化创建
 // 特性
 public:
 	CGeometrySketchpadDoc* GetDocument() const;
-	
+	ObArray<CPoint> previous_click;
+
 	enum MouseState : unsigned {
 		Selection, DrawPoint, DrawLine, DrawTriangle,
 		DrawParallelogram, DrawRectangle, DrawCircle
@@ -44,6 +47,7 @@ protected:
 public:
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	void ChangeMouseState(MouseState state);
+	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 };
 
 #ifndef _DEBUG  // GeometrySketchpadView.cpp 中的调试版本
