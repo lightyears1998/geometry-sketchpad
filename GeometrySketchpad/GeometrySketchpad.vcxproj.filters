@@ -42,6 +42,9 @@
     <ClInclude Include="ShapeArray.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DialogAddPoint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeometrySketchpad.cpp">
@@ -63,6 +66,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ShapeArray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogAddPoint.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

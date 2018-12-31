@@ -191,6 +191,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DialogAddPoint.h" />
     <ClInclude Include="ShapeArray.h" />
     <ClInclude Include="GeometrySketchpad.h" />
     <ClInclude Include="GeometrySketchpadDoc.h" />
@@ -202,6 +203,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DialogAddPoint.cpp" />
     <ClCompile Include="GeometrySketchpad.cpp" />
     <ClCompile Include="GeometrySketchpadDoc.cpp" />
     <ClCompile Include="GeometrySketchpadView.cpp" />

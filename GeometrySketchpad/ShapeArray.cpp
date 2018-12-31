@@ -33,6 +33,7 @@ void ShapeArray::Serialize(CArchive & ar)
 	}
 }
 
+
 void ShapeArray::Enlarge()
 {
 	allocated = allocated / 2 * 3;  // 将预分配的空间扩大为原来的二分之三
@@ -52,8 +53,16 @@ ShapeArray::~ShapeArray()
 }
 
 
-
-Shape * ShapeArray::GetAt(size_t)
+Shape * ShapeArray::GetAt(size_t index)
 {
+	if (index >= 0 && index < count)  // 检查边界条件
+		return arr[index];
 	return nullptr;
+}
+
+
+void ShapeArray::Add(Shape * shape)
+{
+	if (count + 1 == allocated) Enlarge();  // 容器空间将满时扩大容器空间
+	arr[count] = shape; ++count;  // 将对象指针装入容器
 }

@@ -14,6 +14,7 @@ public:
 	virtual void Serialize(CArchive &ar);
 
 	Shape * GetAt(size_t);
+	void Add(Shape * shape);
 
 protected:
 	Shape ** arr;  // 指向储存Shape对象指针的容器的指针
