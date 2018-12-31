@@ -14,7 +14,7 @@ protected: // 仅从序列化创建
 
 // 特性
 public:
-	ShapeArray * arr;
+	ShapeArray * arr = nullptr;
 
 // 操作
 public:

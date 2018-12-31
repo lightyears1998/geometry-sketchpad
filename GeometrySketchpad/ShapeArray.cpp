@@ -14,7 +14,7 @@ ShapeArray::ShapeArray(size_t allocated)
 }
 
 
-IMPLEMENT_SERIAL(ShapeArray, CObject, 1);
+IMPLEMENT_SERIAL(ShapeArray, CObject, 1)
 void ShapeArray::Serialize(CArchive & ar)
 {
 	CObject::Serialize(ar);
@@ -26,9 +26,10 @@ void ShapeArray::Serialize(CArchive & ar)
 		}
 	}
 	else {  // ¶ÁÈ¡¹ý³Ì
-		ar >> count;
+		size_t count;  ar >> count;
 		for (size_t i = 0; i < count; ++i) {
-			arr[i]->Serialize(ar);
+			Shape * shape = (Shape *)ar.ReadObject(nullptr);
+			Add(shape);
 		}
 	}
 }

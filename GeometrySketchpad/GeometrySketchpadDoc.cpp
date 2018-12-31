@@ -41,8 +41,7 @@ BOOL CGeometrySketchpadDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	// TODO: 在此添加重新初始化代码
-	// (SDI 文档将重用该文档)
+	delete arr;  // 释放旧的对象占用的空间
 	arr = new ShapeArray();
 
 	return TRUE;

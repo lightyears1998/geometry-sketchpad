@@ -31,6 +31,7 @@ public:
 	Point() = default;
 	Point(double x, double y) : x(x), y(y) {};
 
+	DECLARE_SERIAL(Point)
 	virtual void Serialize(CArchive &ar);
 	virtual void OnDraw(CDC* pDC);
 	virtual double GetArea();

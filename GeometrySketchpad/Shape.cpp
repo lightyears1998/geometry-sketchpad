@@ -4,11 +4,13 @@
 #include <cmath>
 
 
+IMPLEMENT_SERIAL(Point, CObject, 1)
 void Point::Serialize(CArchive &ar)
 {
 	CObject::Serialize(ar);
 
 	if (ar.IsStoring()) {  // 储存过程
+		ar.WriteClass(RUNTIME_CLASS(Point));
 		ar << x << y;
 	}
 	else {  // 读取过程
@@ -28,7 +30,7 @@ double Point::GetArea()
 
 double Point::GetPerimeter()
 {
-	return 0.0;  // 点的周产为0
+	return 0.0;  // 点的周长为0
 }
 
 void Segment::Serialize(CArchive & ar)
