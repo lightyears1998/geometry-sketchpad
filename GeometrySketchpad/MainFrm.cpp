@@ -9,6 +9,9 @@
 
 #include "Shape.h"
 #include "ShapeArray.h"
+#include "Segment.h"
+#include "Point.h"
+#include "Circle.h"
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -121,6 +124,9 @@ void CMainFrame::OnDebug()
 
 	// 测试添加线段
 	shape_array.Add(new Segment(Point(100, 200), Point(200, 200)));
+
+	// 测试添加圆
+	shape_array.Add(new Circle(Point(500, 500), 200));
 
 	Invalidate();
 }

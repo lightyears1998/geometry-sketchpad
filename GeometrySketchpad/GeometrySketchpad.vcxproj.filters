@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\Shapes">
+      <UniqueIdentifier>{f8eaa0f6-0cad-4fbf-85c3-a0c4f564f57e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Shapes">
+      <UniqueIdentifier>{66122fa3-662d-435e-b688-751f5808a2a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Dialogs">
+      <UniqueIdentifier>{f6818f2c-48da-41a9-ba2a-f645b6fc3eb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Dialogs">
+      <UniqueIdentifier>{4a891d92-af68-45a0-8f06-3c94da038950}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeometrySketchpad.h">
@@ -36,14 +48,26 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="ShapeArray.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>头文件\Shapes</Filter>
+    </ClInclude>
     <ClInclude Include="DialogAddPoint.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>头文件\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>头文件\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Segment.h">
+      <Filter>头文件\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Polygon.h">
+      <Filter>头文件\Shapes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -62,14 +86,20 @@
     <ClCompile Include="GeometrySketchpadView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Shape.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="ShapeArray.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DialogAddPoint.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>源文件\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Segment.cpp">
+      <Filter>源文件\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>源文件\Shapes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
