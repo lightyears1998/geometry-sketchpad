@@ -48,9 +48,6 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeArray.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Shape.h">
       <Filter>头文件\Shapes</Filter>
     </ClInclude>
@@ -72,6 +69,9 @@
     <ClInclude Include="PtArray.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ObArray.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeometrySketchpad.cpp">
@@ -87,9 +87,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GeometrySketchpadView.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeArray.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DialogAddPoint.cpp">
@@ -109,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="Shape.cpp">
       <Filter>源文件\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="ObArray.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

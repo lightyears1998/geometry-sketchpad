@@ -3,14 +3,13 @@
 #include "stdafx.h"
 
 // PtArray
-// 管理T对象指针的动态数组
-// 在此数组析构时，T指针指向的对象将被delete删除
+// 管理对象指针的动态数组
+// 在此数组析构时，指针指向的对象将被使用delete释放空间
 template <typename T>
 class PtArray : public CObject
 {
 public:
 	PtArray(size_t allocated = 10);
-	PtArray(const PtArray& arr);
 	virtual ~PtArray();
 
 	// T对象的数量
@@ -20,7 +19,7 @@ public:
 	T * GetAt(size_t) const;
 
 	// 将新的T对象指针加入数组
-	void Add(T * T);
+	void Add(T * pt);
 
 	// 移除指定位置T对象
 	void Remove(size_t index);
@@ -44,17 +43,6 @@ inline PtArray<T>::PtArray(size_t allocated)
 	this->allocated = allocated;
 	arr = new T *[allocated];
 }
-
-template <typename T>
-inline PtArray<T>::PtArray(const PtArray & src)
-{
-	new (this)PtArray();  // 先调用默认构造函数，以初始化arr数组
-	size_t count = src.GetCount();
-	for (size_t i = 0; i < count; ++i) {  // 逐项深复制
-		Add(src.GetAt(i)->Clone());
-	}
-}
-
 
 template <typename T>
 inline void PtArray<T>::Enlarge()
@@ -92,10 +80,10 @@ inline T * PtArray<T>::GetAt(size_t index) const
 }
 
 template <typename T>
-inline void PtArray<T>::Add(T * T)
+inline void PtArray<T>::Add(T * pt)
 {
 	if (count + 1 == allocated) Enlarge();  // 容器空间将满时扩大容器空间
-	arr[count] = T; ++count;  // 将对象指针装入容器
+	arr[count] = pt; ++count;  // 将对象指针装入容器
 }
 
 template <typename T>

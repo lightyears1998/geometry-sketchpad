@@ -9,7 +9,6 @@
 #include "DialogAddPoint.h"
 
 #include "Shape.h"
-#include "ShapeArray.h"
 #include "Segment.h"
 #include "Point.h"
 #include "Circle.h"
@@ -140,16 +139,10 @@ void CMainFrame::OnDebug()
 	shape_array.Add(new Circle(Point(500, 500), 200));
 
 	// 测试添加多边形
-	ShapeArray pts;
+	PtArray<Shape> pts;
 	pts.Add(new Point(100, 100));
 	pts.Add(new Point(100, 200));
 	pts.Add(new Point(200, 200));
-	shape_array.Add(new PolygonShape(pts));
-
-	//PtArray<Shape> arr;
-	//for (int i = 0; i < 1000; ++i) {
-	//	arr.Add(new Point(100, 100));
-	//}
 
 	Invalidate();
 }

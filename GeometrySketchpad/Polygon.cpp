@@ -19,7 +19,7 @@ void PolygonShape::Serialize(CArchive & ar)
 
 Shape * PolygonShape::Clone() const
 {
-	return new PolygonShape(vertexs);
+	return new PolygonShape();
 }
 
 

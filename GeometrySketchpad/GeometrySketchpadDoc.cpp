@@ -9,6 +9,7 @@
 #endif
 
 #include "GeometrySketchpadDoc.h"
+#include "Shape.h"
 
 #include <propkey.h>
 

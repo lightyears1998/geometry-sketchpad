@@ -2,17 +2,17 @@
 
 #include "stdafx.h"
 #include "Shape.h"
-#include "ShapeArray.h"
-
+#include "Point.h"
+#include "PtArray.hpp"
 
 // ¶à±ßÐÎ
 class PolygonShape : public Shape
 {
 public:
-	ShapeArray vertexs;
+	PtArray<Point> vertexs;
 
 	PolygonShape() : vertexs() {};
-	PolygonShape(const ShapeArray & arr) : vertexs(arr) {};
+	// PolygonShape(const PtArray<Point> & arr) : vertexs(arr) {};
 
 	DECLARE_SERIAL(PolygonShape)
 	virtual void Serialize(CArchive &ar);

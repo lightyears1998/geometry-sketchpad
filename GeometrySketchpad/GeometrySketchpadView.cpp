@@ -11,6 +11,9 @@
 #include "GeometrySketchpadDoc.h"
 #include "GeometrySketchpadView.h"
 
+#include "Shape.h"
+#include "PtArray.hpp"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif

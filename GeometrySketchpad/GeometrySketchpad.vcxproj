@@ -193,11 +193,11 @@
   <ItemGroup>
     <ClInclude Include="Circle.h" />
     <ClInclude Include="DialogAddPoint.h" />
+    <ClInclude Include="ObArray.hpp" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Polygon.h" />
     <ClInclude Include="PtArray.hpp" />
     <ClInclude Include="Segment.h" />
-    <ClInclude Include="ShapeArray.h" />
     <ClInclude Include="GeometrySketchpad.h" />
     <ClInclude Include="GeometrySketchpadDoc.h" />
     <ClInclude Include="GeometrySketchpadView.h" />
@@ -214,11 +214,11 @@
     <ClCompile Include="GeometrySketchpadDoc.cpp" />
     <ClCompile Include="GeometrySketchpadView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="ObArray.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="Segment.cpp" />
     <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="ShapeArray.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

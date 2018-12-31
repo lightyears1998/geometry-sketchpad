@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "ShapeArray.h"
+#include "Shape.h"
 #include "PtArray.hpp"
 
 class CGeometrySketchpadDoc : public CDocument
