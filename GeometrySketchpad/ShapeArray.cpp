@@ -72,3 +72,14 @@ void ShapeArray::Add(Shape * shape)
 	if (count + 1 == allocated) Enlarge();  // 容器空间将满时扩大容器空间
 	arr[count] = shape; ++count;  // 将对象指针装入容器
 }
+
+void ShapeArray::Remove(size_t index)
+{
+	if (index >= 0 && index < count) {
+		delete arr[index];  // 释放被移除对象的空间
+		for (size_t i = index; i < count - 1; ++i) {
+			arr[i] = arr[i + 1];  // 将被移除对象索引位置后的指针逐项前移
+		}
+		--count;  // 持有对象的总数减一
+	}
+}

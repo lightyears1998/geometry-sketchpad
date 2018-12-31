@@ -14,10 +14,10 @@ public:
 	// 绘图函数
 	virtual void OnDraw(CDC* pDC) = 0;
 
-	// 计算面积
+	// 面积计算函数
 	virtual double GetArea() = 0;
 
-	// 计算周长
+	// 周长计算函数
 	virtual double GetPerimeter() = 0;
 };
 

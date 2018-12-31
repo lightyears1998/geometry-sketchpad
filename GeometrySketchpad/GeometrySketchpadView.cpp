@@ -52,10 +52,10 @@ void CGeometrySketchpadView::OnDraw(CDC* pDC)
 	if (!pDoc)
 		return;
 
-	ShapeArray & arr = *(GetDocument()->arr);
-	size_t count = arr.GetCount();
+	ShapeArray & shape_array = *(GetDocument()->shape_array);
+	size_t count = shape_array.GetCount();
 	for (size_t i = 0; i < count; ++i) {
-		arr.GetAt(i)->OnDraw(pDC);
+		shape_array.GetAt(i)->OnDraw(pDC);
 	}
 }
 

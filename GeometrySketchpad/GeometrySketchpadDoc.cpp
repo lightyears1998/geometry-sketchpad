@@ -41,8 +41,8 @@ BOOL CGeometrySketchpadDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	delete arr;  // 释放旧的对象占用的空间
-	arr = new ShapeArray();
+	delete shape_array;  // 释放旧的对象占用的空间
+	shape_array = new ShapeArray();
 
 	return TRUE;
 }
@@ -56,11 +56,11 @@ void CGeometrySketchpadDoc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())  // 储存过程
 	{
-		arr->Serialize(ar);
+		shape_array->Serialize(ar);
 	}
 	else  // 加载过程
 	{
-		arr->Serialize(ar);
+		shape_array->Serialize(ar);
 	}
 }
 

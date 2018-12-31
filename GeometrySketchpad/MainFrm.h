@@ -39,6 +39,7 @@ protected:
 
 public:
 	afx_msg void OnDebug();
+	afx_msg void OnAddPoint();
 };
 
 

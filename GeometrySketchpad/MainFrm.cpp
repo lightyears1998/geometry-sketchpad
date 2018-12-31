@@ -5,6 +5,8 @@
 #include "GeometrySketchpad.h"
 #include "GeometrySketchpadDoc.h"
 
+#include "DialogAddPoint.h"
+
 #include "Shape.h"
 #include "ShapeArray.h"
 #include "MainFrm.h"
@@ -20,6 +22,7 @@ IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
 	ON_COMMAND(ID_DEBUG, &CMainFrame::OnDebug)
+	ON_COMMAND(ID_ADD_POINT, &CMainFrame::OnAddPoint)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -104,9 +107,31 @@ void CMainFrame::Dump(CDumpContext& dc) const
 void CMainFrame::OnDebug()
 {
 	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
-	ShapeArray & arr = *(doc->arr);
+	
+	// 测试添加功能
+	ShapeArray & shape_array = *(doc->shape_array);
 	for (int i = 0; i < 128; ++i) {
-		arr.Add(new Point(2 * i, 2 * i));
+		shape_array.Add(new Point(2 * i, 2 * i));
+	}
+
+	// 测试移除功能
+	for (int i = 0; i < 128; ++i) {
+		shape_array.Remove(i * 4);
+	}
+
+	Invalidate();
+}
+
+
+void CMainFrame::OnAddPoint()
+{
+	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
+
+	DialogAddPoint dlg;
+	if (dlg.DoModal() == IDOK) {
+		double x = dlg.coordinate_x, y = dlg.coordinate_y;
+		Point * pt = new Point(x, y);
+		doc->shape_array->Add(pt);
 	}
 	Invalidate();
 }
