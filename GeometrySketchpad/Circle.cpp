@@ -18,6 +18,11 @@ void Circle::Serialize(CArchive & ar)
 	}
 }
 
+Shape * Circle::Clone() const
+{
+	return new Circle(center, radius);
+}
+
 void Circle::OnDraw(CDC * pDC)
 {
 	int x1 = int(center.x - radius), y1 = int(center.y - radius);  // 圆外接矩形左上角

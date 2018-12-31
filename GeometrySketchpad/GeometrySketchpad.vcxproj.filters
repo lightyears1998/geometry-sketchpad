@@ -101,6 +101,12 @@
     <ClCompile Include="Circle.cpp">
       <Filter>源文件\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="Polygon.cpp">
+      <Filter>源文件\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>源文件\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GeometrySketchpad.rc">

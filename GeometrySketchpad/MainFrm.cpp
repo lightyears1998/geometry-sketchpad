@@ -12,6 +12,7 @@
 #include "Segment.h"
 #include "Point.h"
 #include "Circle.h"
+#include "Polygon.h"
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -127,6 +128,13 @@ void CMainFrame::OnDebug()
 
 	// 测试添加圆
 	shape_array.Add(new Circle(Point(500, 500), 200));
+
+	// 测试添加多边形
+	ShapeArray pts;
+	pts.Add(new Point(100, 100));
+	pts.Add(new Point(100, 200));
+	pts.Add(new Point(200, 200));
+	shape_array.Add(new PolygonShape(pts));
 
 	Invalidate();
 }

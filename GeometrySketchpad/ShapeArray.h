@@ -10,16 +10,17 @@ class ShapeArray : public CObject
 {
 public:
 	ShapeArray(size_t allocated = 10);
+	ShapeArray(const ShapeArray& arr);
 	virtual ~ShapeArray();
 
 	DECLARE_SERIAL(ShapeArray);
 	virtual void Serialize(CArchive &ar);
 
 	// Shape对象的数量
-	size_t GetCount();
+	size_t GetCount() const;
 
 	// 取得索引位置的Shape对象指针
-	Shape * GetAt(size_t);
+	Shape * GetAt(size_t) const;
 
 	// 将新的Shape对象指针加入数组
 	void Add(Shape * shape);

@@ -13,6 +13,15 @@ ShapeArray::ShapeArray(size_t allocated)
 	arr = new Shape *[allocated];
 }
 
+ShapeArray::ShapeArray(const ShapeArray & src)
+{
+	new (this)ShapeArray();  // 先调用默认构造函数，以初始化arr数组
+	size_t count = src.GetCount();
+	for (size_t i = 0; i < count; ++i) {  // 逐项深复制
+		Add(src.GetAt(i)->Clone());
+	}
+}
+
 
 IMPLEMENT_SERIAL(ShapeArray, CObject, 1)
 void ShapeArray::Serialize(CArchive & ar)
@@ -54,12 +63,12 @@ ShapeArray::~ShapeArray()
 }
 
 
-size_t ShapeArray::GetCount()
+size_t ShapeArray::GetCount() const
 {
 	return count;
 }
 
-Shape * ShapeArray::GetAt(size_t index)
+Shape * ShapeArray::GetAt(size_t index) const
 {
 	if (index >= 0 && index < count)  // 检查边界条件
 		return arr[index];

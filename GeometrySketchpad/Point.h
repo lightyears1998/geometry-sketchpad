@@ -14,6 +14,8 @@ public:
 
 	CPoint ToCPoint();
 
+	virtual Shape * Clone() const;
+
 	DECLARE_SERIAL(Point)
 	virtual void Serialize(CArchive &ar);
 

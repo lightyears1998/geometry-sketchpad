@@ -2,15 +2,24 @@
 
 #include "stdafx.h"
 #include "Shape.h"
-
+#include "ShapeArray.h"
 
 
 // ¶à±ßÐÎ
-class Polygon : public Shape
+class PolygonShape : public Shape
 {
 public:
-	int vertex_count;
-	// ShapeArray vertexs;
+	ShapeArray vertexs;
 
-	/// Polygon() : vertex_count(0), vertexs() {};
+	PolygonShape() : vertexs() {};
+	PolygonShape(const ShapeArray & arr) : vertexs(arr) {};
+
+	DECLARE_SERIAL(PolygonShape)
+	virtual void Serialize(CArchive &ar);
+
+	virtual Shape * Clone() const;
+
+	virtual void OnDraw(CDC* pDC);
+	virtual double GetArea();
+	virtual double GetPerimeter();
 };

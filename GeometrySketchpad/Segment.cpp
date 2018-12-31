@@ -16,6 +16,10 @@ void Segment::Serialize(CArchive & ar)
 	}
 }
 
+Shape * Segment::Clone() const
+{
+	return new Segment(head, tail);
+}
 
 void Segment::OnDraw(CDC * pDC)
 {
