@@ -107,9 +107,6 @@
     <ClCompile Include="Shape.cpp">
       <Filter>源文件\Shapes</Filter>
     </ClCompile>
-    <ClCompile Include="ObArray.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GeometrySketchpad.rc">

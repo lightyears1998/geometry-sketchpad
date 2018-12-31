@@ -214,7 +214,6 @@
     <ClCompile Include="GeometrySketchpadDoc.cpp" />
     <ClCompile Include="GeometrySketchpadView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
-    <ClCompile Include="ObArray.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="Segment.cpp" />
