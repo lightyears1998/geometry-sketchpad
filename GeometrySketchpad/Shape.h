@@ -10,9 +10,6 @@ public:
 	Shape() = default;
 	virtual ~Shape() = default;
 
-	// 获取对象的一个克隆
-	virtual Shape * Clone() const = 0;
-
 	// 序列化实现
 	virtual void Serialize(CArchive &ar) = 0;
 

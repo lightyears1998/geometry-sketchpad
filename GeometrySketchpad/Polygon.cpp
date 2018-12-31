@@ -9,28 +9,30 @@ void PolygonShape::Serialize(CArchive & ar)
 	CObject::Serialize(ar);
 
 	if (ar.IsStoring()) {  // 储存过程
-		vertexs.Serialize(ar);
+		size_t count = vertexs.GetCount();
+		ar << count;
+		for (size_t i = 0; i < count; ++i) {
+			vertexs.GetAt(i).Serialize(ar);
+		}
 	}
 	else {  // 读取过程
 		vertexs.Serialize(ar);
+		size_t count; ar >> count;
+		for (size_t i = 0; i < count; ++i) {
+			Point pt; pt.Serialize(ar);
+			vertexs.Add(pt);
+		}
 	}
-}
-
-
-Shape * PolygonShape::Clone() const
-{
-	return new PolygonShape();
 }
 
 
 void PolygonShape::OnDraw(CDC * pDC)
 {
-	// 不考虑退化成点、线段的情况
-	pDC->MoveTo(((Point *)(vertexs.GetAt(0)))->ToCPoint());
+	pDC->MoveTo((vertexs.GetAt(0).ToCPoint()));
 	for (size_t i = 1; i < vertexs.GetCount(); ++i) {
-		pDC->LineTo(((Point *)(vertexs.GetAt(i)))->ToCPoint());
+		pDC->LineTo(vertexs.GetAt(i).ToCPoint());
 	}
-	pDC->LineTo(((Point *)(vertexs.GetAt(0)))->ToCPoint());
+	pDC->LineTo(vertexs.GetAt(0).ToCPoint());
 }
 
 

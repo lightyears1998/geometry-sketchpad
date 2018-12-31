@@ -13,8 +13,6 @@ public:
 	Circle() : center(0, 0), radius(0) {};
 	Circle(Point center, double radius) : center(center), radius(radius) {};
 
-	Shape * Clone() const;
-
 	DECLARE_SERIAL(Circle)
 	virtual void Serialize(CArchive &ar);
 

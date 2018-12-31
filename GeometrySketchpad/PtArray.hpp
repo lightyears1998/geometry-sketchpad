@@ -61,7 +61,7 @@ inline PtArray<T>::~PtArray()
 	for (size_t i = 0; i < count; ++i) {
 		delete arr[i];  // 释放T对象
 	}
-	delete arr;  // 释放容器空间
+	delete[] arr;  // 释放容器空间
 }
 
 

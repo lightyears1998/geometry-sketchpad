@@ -13,8 +13,6 @@ public:
 	Segment() = default;
 	Segment(const Point &head, const Point &tail) : head(head), tail(tail) {};
 
-	virtual Shape * Clone() const;
-
 	DECLARE_SERIAL(Segment)
 	virtual void Serialize(CArchive &ar);
 

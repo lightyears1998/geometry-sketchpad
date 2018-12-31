@@ -12,9 +12,9 @@ public:
 	Point(double x, double y) : x(x), y(y) {};
 	Point(const Point & pt) : x(pt.x), y(pt.y) {};
 
-	CPoint ToCPoint();
+	Point& operator =(const Point & pt);
 
-	virtual Shape * Clone() const;
+	CPoint ToCPoint();
 
 	DECLARE_SERIAL(Point)
 	virtual void Serialize(CArchive &ar);

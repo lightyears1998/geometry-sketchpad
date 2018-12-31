@@ -8,7 +8,8 @@ template <typename T>
 class ObArray : public CObject
 {
 public:
-	ObArray(size_t allocated = 10);
+	ObArray(size_t allocated = 32);
+	ObArray(const ObArray &src);
 	virtual ~ObArray();
 
 	// T对象的数量
@@ -43,6 +44,15 @@ inline ObArray<T>::ObArray(size_t allocated)
 	arr = new T[allocated];
 }
 
+template<typename T>
+inline ObArray<T>::ObArray(const ObArray & src)
+{
+	new (this)ObArray();
+	for (size_t i = 0; i < src.GetCount(); ++i) {
+		Add(src.GetAt(i));
+	}
+}
+
 template <typename T>
 inline void ObArray<T>::Enlarge()
 {
@@ -57,9 +67,8 @@ inline void ObArray<T>::Enlarge()
 template <typename T>
 inline ObArray<T>::~ObArray()
 {
-	delete arr;  // 释放容器空间
+	delete[] arr;  // 释放容器空间
 }
-
 
 template <typename T>
 inline size_t ObArray<T>::GetCount() const
@@ -72,14 +81,14 @@ inline T& ObArray<T>::GetAt(size_t index) const
 {
 	if (index >= 0 && index < count)  // 检查边界条件
 		return arr[index];
-	return  
+	AfxThrowInvalidArgException();  // 数组下标越界
 }
 
 template <typename T>
 inline void ObArray<T>::Add(const T &pt)
 {
 	if (count + 1 == allocated) Enlarge();  // 容器空间将满时扩大容器空间
-	arr[count] = pt; ++count;  // 将对象指针装入容器
+	arr[count] = pt; ++count;  // 将对象装入容器
 }
 
 template <typename T>

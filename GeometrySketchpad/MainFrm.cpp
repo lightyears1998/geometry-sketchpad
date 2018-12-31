@@ -139,10 +139,11 @@ void CMainFrame::OnDebug()
 	shape_array.Add(new Circle(Point(500, 500), 200));
 
 	// 测试添加多边形
-	PtArray<Shape> pts;
-	pts.Add(new Point(100, 100));
-	pts.Add(new Point(100, 200));
-	pts.Add(new Point(200, 200));
+	ObArray<Point> pts;
+	pts.Add(Point(500, 500));
+	pts.Add(Point(500, 1000));
+	pts.Add(Point(1000, 1000));
+	shape_array.Add(new PolygonShape(pts));
 
 	Invalidate();
 }
