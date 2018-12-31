@@ -103,13 +103,13 @@ void CMainFrame::Dump(CDumpContext& dc) const
 // CMainFrame 消息处理程序
 
 
-
+// 用于调试程序功能的函数
 void CMainFrame::OnDebug()
 {
 	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
-	
-	// 测试添加功能
 	ShapeArray & shape_array = *(doc->shape_array);
+
+	// 测试添加功能
 	for (int i = 0; i < 128; ++i) {
 		shape_array.Add(new Point(2 * i, 2 * i));
 	}
@@ -118,6 +118,9 @@ void CMainFrame::OnDebug()
 	for (int i = 0; i < 128; ++i) {
 		shape_array.Remove(i * 4);
 	}
+
+	// 测试添加线段
+	shape_array.Add(new Segment(Point(100, 200), Point(200, 200)));
 
 	Invalidate();
 }

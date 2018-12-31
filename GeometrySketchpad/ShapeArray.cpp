@@ -22,7 +22,7 @@ void ShapeArray::Serialize(CArchive & ar)
 	if (ar.IsStoring()) {  // 储存过程
 		ar << count;
 		for (size_t i = 0; i < count; ++i) {
-			arr[i]->Serialize(ar);
+			ar.WriteObject(arr[i]);  // 不能使用Serialize()，因为读取时无法获取类型信息；需要使用WriteObject()先写入类型信息
 		}
 	}
 	else {  // 读取过程
