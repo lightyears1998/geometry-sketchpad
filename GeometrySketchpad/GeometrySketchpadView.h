@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "DialogShapeSelection.h"
+
 #include "PtArray.hpp"
 #include "ObArray.hpp"
 #include "Point.h"
@@ -18,6 +20,7 @@ public:
 	CGeometrySketchpadDoc* GetDocument() const;
 	PtArray<Shape> realtime_feedback;  // 给予用户的实时反馈
 	ObArray<Point> click_positions;
+	DialogShapeSelection shape_selection_dialog;
 
 	enum MouseState : unsigned {
 		Selection, DrawPoint, DrawLine, DrawTriangle,
@@ -53,6 +56,8 @@ public:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	// 将视图恢复到默认状态
 	void RestoreDefaultState();
+	// 显示“图形列表”窗口
+	void ShowShapeListDialog();
 };
 
 #ifndef _DEBUG  // GeometrySketchpadView.cpp 中的调试版本

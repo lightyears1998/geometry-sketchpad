@@ -36,6 +36,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_COMMAND(ID_MOUSE_DRAW_PARALLELOGRAM, &CMainFrame::OnMouseDrawParallelogram)
 	ON_COMMAND(ID_MOUSE_DRAW_LINE, &CMainFrame::OnMouseDrawLine)
 	ON_COMMAND(ID_MOUSE_DRAW_CIRCLE, &CMainFrame::OnMouseDrawCircle)
+	ON_COMMAND(ID_VIEW_SHAPE_LIST, &CMainFrame::OnViewShapeList)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -210,4 +211,11 @@ void CMainFrame::OnMouseDrawCircle()
 {
 	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
 	view->ChangeMouseState(CGeometrySketchpadView::MouseState::DrawCircle);
+}
+
+
+void CMainFrame::OnViewShapeList()
+{
+	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetActiveView();
+	view->ShowShapeListDialog();
 }

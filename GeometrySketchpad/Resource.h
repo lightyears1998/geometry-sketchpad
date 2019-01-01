@@ -7,8 +7,10 @@
 #define IDR_MAINFRAME                   128
 #define IDR_GeometrySketchpadTYPE       130
 #define IDD_ADD_POINT                   311
+#define IDD_SHAPE_SELECTION             313
 #define IDC_EDIT_X                      1000
 #define IDC_EDIT_Y                      1001
+#define IDC_TREE                        1002
 #define ID_DRAW_POINT                   32772
 #define ID_MOUSE_DRAW_POINT             32772
 #define ID_DRAW_LINE                    32774
@@ -35,14 +37,16 @@
 #define ID_32794                        32794
 #define ID_32795                        32795
 #define ID_MOUSE_DRAW_CIRCLE            32796
+#define ID_32797                        32797
+#define ID_VIEW_SHAPE_LIST              32798
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        313
-#define _APS_NEXT_COMMAND_VALUE         32797
-#define _APS_NEXT_CONTROL_VALUE         1002
+#define _APS_NEXT_RESOURCE_VALUE        315
+#define _APS_NEXT_COMMAND_VALUE         32799
+#define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

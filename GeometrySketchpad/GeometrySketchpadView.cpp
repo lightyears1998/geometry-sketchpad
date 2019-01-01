@@ -39,7 +39,7 @@ END_MESSAGE_MAP()
 CGeometrySketchpadView::CGeometrySketchpadView() noexcept
 {
 	// TODO: 在此处添加构造代码
-
+	
 }
 
 CGeometrySketchpadView::~CGeometrySketchpadView()
@@ -283,4 +283,14 @@ void CGeometrySketchpadView::OnMouseMove(UINT nFlags, CPoint point)
 void CGeometrySketchpadView::RestoreDefaultState()
 {
 	ChangeMouseState(MouseState::Selection);
+}
+
+
+// 显示“图形列表”窗口
+void CGeometrySketchpadView::ShowShapeListDialog()
+{
+	if (shape_selection_dialog.m_hWnd == nullptr) {  // 如果此前没有创建“图形列表”窗口则创建
+		shape_selection_dialog.Create(IDD_SHAPE_SELECTION);
+	}
+	shape_selection_dialog.ShowWindow(SW_NORMAL);
 }
