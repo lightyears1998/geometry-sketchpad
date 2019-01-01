@@ -1,5 +1,6 @@
 #pragma once
 
+#include "PtArray.hpp"
 
 // DialogShapeSelection dialog
 
@@ -10,6 +11,8 @@ class DialogShapeSelection : public CDialogEx
 public:
 	DialogShapeSelection(CWnd* pParent = nullptr);   // standard constructor
 	virtual ~DialogShapeSelection();
+	
+	PtArray<Shape> * shape_array = nullptr;
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -20,4 +23,8 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 	DECLARE_MESSAGE_MAP()
+public:
+	void UpdateShapeState();
+	CTreeCtrl shape_tree;
+	virtual BOOL OnInitDialog();
 };

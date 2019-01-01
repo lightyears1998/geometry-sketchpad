@@ -35,7 +35,7 @@ void Point::OnDraw(CDC* pDC)
 	CBrush black_brush(RGB(0, 0, 0)), red_brush(RGB(237, 85, 106));
 	CBrush * old_brush = pDC->SelectObject(IsSelected ? &red_brush : &black_brush);
 	
-	pDC->Ellipse(x-5, y-5, x+5, y+5);  // 将半径5逻辑单位的圆上色
+	pDC->Ellipse(int(x)-5, int(y)-5, int(x)+5, int(y)+5);  // 将半径5逻辑单位的圆上色
 
 	pDC->SelectObject(old_brush);
 }

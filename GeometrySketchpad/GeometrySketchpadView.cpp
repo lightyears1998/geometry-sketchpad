@@ -290,7 +290,22 @@ void CGeometrySketchpadView::RestoreDefaultState()
 void CGeometrySketchpadView::ShowShapeListDialog()
 {
 	if (shape_selection_dialog.m_hWnd == nullptr) {  // 如果此前没有创建“图形列表”窗口则创建
-		shape_selection_dialog.Create(IDD_SHAPE_SELECTION);
+		shape_selection_dialog.shape_array = &(GetDocument()->shape_array);
+		shape_selection_dialog.Create(IDD_SHAPE_SELECTION, this);
 	}
 	shape_selection_dialog.ShowWindow(SW_NORMAL);
+}
+
+
+// 改变特定图形的选取状态
+void CGeometrySketchpadView::SelectShape(size_t index, bool is_selected)
+{
+	SyncShapeState();
+}
+
+
+// 在视图类与图形选择窗口之间同步选择状态
+void CGeometrySketchpadView::SyncShapeState()
+{
+	
 }
