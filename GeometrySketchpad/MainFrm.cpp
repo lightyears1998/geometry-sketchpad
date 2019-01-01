@@ -137,6 +137,7 @@ void CMainFrame::OnDebug()
 
 	// 测试添加圆
 	shape_array.Add(new Circle(Point(500, 500), 200));
+	shape_array.Add(new Circle(Point(300, 200), 200));
 
 	// 测试添加多边形
 	ObArray<Point> pts;
