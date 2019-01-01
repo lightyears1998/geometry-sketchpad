@@ -18,8 +18,13 @@ void Segment::Serialize(CArchive & ar)
 
 void Segment::OnDraw(CDC * pDC)
 {
+	CPen black_pen(PS_SOLID, 3, RGB(0, 0, 0)), red_pen(PS_SOLID, 3, RGB(237, 85, 106));
+	CPen * old_pen = pDC->SelectObject(IsSelected ? &red_pen : &black_pen);
+
 	pDC->MoveTo(head.ToCPoint());
 	pDC->LineTo(tail.ToCPoint());
+
+	pDC->SelectObject(old_pen);
 }
 
 double Segment::GetArea()

@@ -53,11 +53,16 @@ void ArbitraryPolygon::MakeParallelogramFromPoints(const Point & a, const Point 
 
 void ArbitraryPolygon::OnDraw(CDC * pDC)
 {
+	CPen black_pen(PS_SOLID, 3, RGB(0, 0, 0)), red_pen(PS_SOLID, 3, RGB(237, 85, 106));
+	CPen * old_pen = pDC->SelectObject(IsSelected ? &red_pen : &black_pen);
+
 	pDC->MoveTo((vertexs.GetAt(0).ToCPoint()));
 	for (size_t i = 1; i < vertexs.GetCount(); ++i) {
 		pDC->LineTo(vertexs.GetAt(i).ToCPoint());
 	}
 	pDC->LineTo(vertexs.GetAt(0).ToCPoint());
+
+	pDC->SelectObject(old_pen);
 }
 
 

@@ -10,6 +10,8 @@ public:
 	Shape() = default;
 	virtual ~Shape() = default;
 
+	bool IsSelected = false;  // 当前图形是否被选中
+
 	// 序列化实现
 	virtual void Serialize(CArchive &ar) = 0;
 
