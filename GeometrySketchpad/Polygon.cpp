@@ -3,8 +3,8 @@
 #include "Point.h"
 
 
-IMPLEMENT_SERIAL(PolygonShape, CObject, 1)
-void PolygonShape::Serialize(CArchive & ar)
+IMPLEMENT_SERIAL(ArbitraryPolygon, CObject, 1)
+void ArbitraryPolygon::Serialize(CArchive & ar)
 {
 	CObject::Serialize(ar);
 
@@ -25,8 +25,33 @@ void PolygonShape::Serialize(CArchive & ar)
 	}
 }
 
+void ArbitraryPolygon::MakeRectangle(const Point & v1, const Point & v2)
+{
+	vertexs.Clear();
 
-void PolygonShape::OnDraw(CDC * pDC)
+	Point a(v1), b(v1.x, v2.y), c(v2), d(v2.x, v1.y);
+	vertexs.Add(a), vertexs.Add(b), vertexs.Add(c), vertexs.Add(d);
+}
+
+
+void ArbitraryPolygon::MakeTriangle(const Point & a, const Point & b, const Point & c)
+{
+	vertexs.Clear();  // 清空原有顶点
+
+	vertexs.Add(a), vertexs.Add(b), vertexs.Add(c);
+}
+
+
+void ArbitraryPolygon::MakeParallelogramFromPoints(const Point & a, const Point & b, const Point & c)
+{
+	vertexs.Clear();  // 清空原有顶点
+
+	const Point d(a.x + c.x - b.x, a.y + c.y - b.y);  // 计算出第四个顶点的位置
+	vertexs.Add(a), vertexs.Add(b), vertexs.Add(c), vertexs.Add(d);
+}
+
+
+void ArbitraryPolygon::OnDraw(CDC * pDC)
 {
 	pDC->MoveTo((vertexs.GetAt(0).ToCPoint()));
 	for (size_t i = 1; i < vertexs.GetCount(); ++i) {
@@ -36,13 +61,13 @@ void PolygonShape::OnDraw(CDC * pDC)
 }
 
 
-double PolygonShape::GetArea()
+double ArbitraryPolygon::GetArea()
 {
 	return 0.0;
 }
 
 
-double PolygonShape::GetPerimeter()
+double ArbitraryPolygon::GetPerimeter()
 {
 	return 0.0;
 }

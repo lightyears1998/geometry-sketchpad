@@ -9,6 +9,7 @@
 #endif
 
 #include "GeometrySketchpadDoc.h"
+#include "GeometrySketchpadView.h"
 #include "Shape.h"
 
 #include <propkey.h>
@@ -43,6 +44,9 @@ BOOL CGeometrySketchpadDoc::OnNewDocument()
 		return FALSE;
 
 	shape_array.Clear();
+	POSITION view_postion = GetFirstViewPosition();
+	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetNextView(view_postion);
+	view->RestoreDefaultState();
 
 	return TRUE;
 }

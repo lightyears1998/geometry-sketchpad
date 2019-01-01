@@ -144,7 +144,7 @@ void CMainFrame::OnDebug()
 	pts.Add(Point(500, 500));
 	pts.Add(Point(500, 1000));
 	pts.Add(Point(1000, 1000));
-	shape_array.Add(new PolygonShape(pts));
+	shape_array.Add(new ArbitraryPolygon(pts));
 
 	Invalidate();
 }

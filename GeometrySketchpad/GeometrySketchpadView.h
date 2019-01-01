@@ -17,7 +17,7 @@ protected: // 仅从序列化创建
 public:
 	CGeometrySketchpadDoc* GetDocument() const;
 	PtArray<Shape> realtime_feedback;  // 给予用户的实时反馈
-	ObArray<Point> previous_click;
+	ObArray<Point> click_positions;
 
 	enum MouseState : unsigned {
 		Selection, DrawPoint, DrawLine, DrawTriangle,
@@ -51,6 +51,8 @@ public:
 	void ChangeMouseState(MouseState state);
 	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	// 将视图恢复到默认状态
+	void RestoreDefaultState();
 };
 
 #ifndef _DEBUG  // GeometrySketchpadView.cpp 中的调试版本

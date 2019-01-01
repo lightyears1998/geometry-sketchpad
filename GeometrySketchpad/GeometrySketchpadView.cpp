@@ -112,64 +112,55 @@ void CGeometrySketchpadView::OnLButtonDown(UINT nFlags, CPoint point)
 	CGeometrySketchpadDoc * doc = GetDocument();
 	PtArray<Shape> & shape_array = doc->shape_array;
 
-	size_t count = previous_click.GetCount();   // 鼠标左键单击事件的计数器
+	click_positions.Add(point);
+	size_t click_count = click_positions.GetCount();   // 左键单词次数
 
 	switch (mouse_state)
 	{
 	case MouseState::DrawPoint: {
-		shape_array.Add(new Point(point.x, point.y));
+		if (click_count == 1) {
+			shape_array.Add(new Point(point.x, point.y));
+			click_positions.Clear();
+		}
 		break;
 	}
 	case MouseState::DrawLine: {
-		if (count == 0) {
-			previous_click.Add(point);
-		}
-		else if (count == 1) {
-			Point head = previous_click.GetAt(0), tail = point;
-			previous_click.Clear();
+		if (click_count == 2) {
+			Point head = click_positions.GetAt(0), tail = point;
+			click_positions.Clear();
 			shape_array.Add(new Segment(head, tail));
 		}
 		break;
 	}
 	case MouseState::DrawTriangle: {
-		if (count == 0 || count == 1) {
-			previous_click.Add(point);
-		}
-		else if (count == 2) {
-			Point pt1 = previous_click.GetAt(0);
-			Point pt2 = previous_click.GetAt(1);
-			previous_click.Clear();
-			
-			ObArray<Point> vertexs;
-			vertexs.Add(pt1), vertexs.Add(pt2), vertexs.Add(point);
+		if (click_count == 3) {
+			Point pt1 = click_positions.GetAt(0);
+			Point pt2 = click_positions.GetAt(1);
+			Point pt3 = point;
+			click_positions.Clear();
 
-			shape_array.Add(new PolygonShape(vertexs));
+			ArbitraryPolygon * triangle = new ArbitraryPolygon();
+			triangle->MakeTriangle(pt1, pt2, pt3);
+			shape_array.Add(triangle);
 		}
 		break;
 	}
 	case MouseState::DrawRectangle: {
-		if (count == 0) {
-			previous_click.Add(point);
-		}
-		else if (count == 1) {
-			Point dia_p1 = previous_click.GetAt(0);  // 矩形对角线上的一点
-			Point dia_p2 = point;  // 矩形对角线上的另一点
-			previous_click.Clear();
+		if (click_count == 2) {
+			Point pt1 = click_positions.GetAt(0);  // 矩形对角线上的一点
+			Point pt2 = point;  // 矩形对角线上的另一点
+			click_positions.Clear();
 
-			ObArray<Point> vertexs;
-			Point a(dia_p1), b(dia_p1.x, dia_p2.y), c(dia_p2), d(dia_p2.x, dia_p1.y);
-			vertexs.Add(a), vertexs.Add(b), vertexs.Add(c), vertexs.Add(d);
-			shape_array.Add(new PolygonShape(vertexs));
+			ArbitraryPolygon * rectangle = new ArbitraryPolygon();
+			rectangle->MakeRectangle(pt1, pt2);
+			shape_array.Add(rectangle);
 		}
 		break;
 	}
 	case MouseState::DrawCircle: {
-		if (count == 0) {
-			previous_click.Add(point);
-		}
-		else if (count == 1) {
-			Point center = previous_click.GetAt(0);
-			previous_click.Clear();
+		if (click_count == 2) {
+			Point center = click_positions.GetAt(0);
+			click_positions.Clear();
 			
 			double radius = hypot(point.x - center.x, point.y - center.y);
 			shape_array.Add(new Circle(center, radius));
@@ -177,20 +168,15 @@ void CGeometrySketchpadView::OnLButtonDown(UINT nFlags, CPoint point)
 		break;
 	}
 	case MouseState::DrawParallelogram: {
-		if (count == 0 || count == 1) {
-			previous_click.Add(point);
-		}
-		else {
-			Point a = previous_click.GetAt(0),
-				b = previous_click.GetAt(1),
-				c = point,
-				d = Point(a.x + c.x - b.x, a.y + c.y - b.y);
+		if (click_count == 3) {
+			Point pt1 = click_positions.GetAt(0),
+				pt2 = click_positions.GetAt(1),
+				pt3 = point;
+			click_positions.Clear();
 
-			previous_click.Clear();
-
-			ObArray<Point> vertexs;
-			vertexs.Add(a), vertexs.Add(b), vertexs.Add(c), vertexs.Add(d);
-			shape_array.Add(new PolygonShape(vertexs));
+			ArbitraryPolygon * parallelogram = new ArbitraryPolygon();
+			parallelogram->MakeParallelogramFromPoints(pt1, pt2, pt3);
+			shape_array.Add(parallelogram);
 		}
 	}
 	}
@@ -205,7 +191,7 @@ void CGeometrySketchpadView::OnLButtonDown(UINT nFlags, CPoint point)
 void CGeometrySketchpadView::ChangeMouseState(MouseState state)
 {
 	mouse_state = state;
-	previous_click.Clear();
+	click_positions.Clear();
 	realtime_feedback.Clear();
 }
 
@@ -223,53 +209,63 @@ BOOL CGeometrySketchpadView::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message
 
 void CGeometrySketchpadView::OnMouseMove(UINT nFlags, CPoint point)
 {
-	size_t count = previous_click.GetCount();
+	size_t click_count = click_positions.GetCount();
 
-	if (count == 0) return;
+	if (click_count == 0) return;
+	realtime_feedback.Clear();  // 清除以往的实时预览
 
 	switch (mouse_state)
 	{
 	case MouseState::DrawLine: {
-		if (count == 1) {
-			realtime_feedback.Clear();
-			realtime_feedback.Add(new Segment(previous_click.GetAt(0), point));
+		if (click_count == 1) {
+			
+			realtime_feedback.Add(new Segment(click_positions.GetAt(0), point));
 		}
 		break;
 	}
 	case MouseState::DrawTriangle: {
-		if (count == 1) {
-			realtime_feedback.Clear();
-			realtime_feedback.Add(new Segment(previous_click.GetAt(0), point));
+		if (click_count == 1) {
+			realtime_feedback.Add(new Segment(click_positions.GetAt(0), point));
 		}
-		else if (count == 2) {
-			realtime_feedback.Clear();
-			realtime_feedback.Add(new Segment(previous_click.GetAt(0), previous_click.GetAt(1)));
-			realtime_feedback.Add(new Segment(previous_click.GetAt(0), point));
-			realtime_feedback.Add(new Segment(previous_click.GetAt(1), point));
+		else if (click_count == 2) {
+			realtime_feedback.Add(new Segment(click_positions.GetAt(0), click_positions.GetAt(1)));
+			realtime_feedback.Add(new Segment(click_positions.GetAt(0), point));
+			realtime_feedback.Add(new Segment(click_positions.GetAt(1), point));
 		}
 		break;
 	}
 	case MouseState::DrawRectangle: {
-		if (count == 1) {
-			realtime_feedback.Clear();
-			
-			Point dia_p1 = previous_click.GetAt(0);  // 矩形对角线上的一点
-			Point dia_p2 = point;  // 矩形对角线上的另一点
+		if (click_count == 1) {
+			Point v1 = click_positions.GetAt(0);  // 矩形对角线上的一点
+			Point v2 = point;  // 矩形对角线上的另一点
 
-			ObArray<Point> vertexs;
-			Point a(dia_p1), b(dia_p1.x, dia_p2.y), c(dia_p2), d(dia_p2.x, dia_p1.y);
-			vertexs.Add(a), vertexs.Add(b), vertexs.Add(c), vertexs.Add(d);
-			realtime_feedback.Add(new PolygonShape(vertexs));
+			ArbitraryPolygon * rectangle = new ArbitraryPolygon();
+			rectangle->MakeRectangle(v1, v2);
+			realtime_feedback.Add(rectangle);
 		}
 		break;
 	}
 	case MouseState::DrawCircle: {
-		if (count == 1) {
-			realtime_feedback.Clear();
-			Point center = previous_click.GetAt(0);
+		if (click_count == 1) {
+			Point center = click_positions.GetAt(0);
 
 			double radius = hypot(point.x - center.x, point.y - center.y);
 			realtime_feedback.Add(new Circle(center, radius));
+		}
+		break;
+	}
+	case MouseState::DrawParallelogram: {
+		if (click_count == 1) {
+			realtime_feedback.Add(new Segment(click_positions.GetAt(0), point));
+		}
+		else if (click_count == 2) {
+			Point pt1 = click_positions.GetAt(0),
+				pt2 = click_positions.GetAt(1),
+				pt3 = point;
+
+			ArbitraryPolygon * parallelogram = new ArbitraryPolygon();
+			parallelogram->MakeParallelogramFromPoints(pt1, pt2, pt3);
+			realtime_feedback.Add(parallelogram);
 		}
 		break;
 	}
@@ -280,4 +276,11 @@ void CGeometrySketchpadView::OnMouseMove(UINT nFlags, CPoint point)
 	Invalidate();
 	// 不需要调用基类函数
 	// CView::OnMouseMove(nFlags, point);
+}
+
+
+// 将视图恢复到默认状态
+void CGeometrySketchpadView::RestoreDefaultState()
+{
+	ChangeMouseState(MouseState::Selection);
 }
