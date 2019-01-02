@@ -62,6 +62,8 @@ public:
 	void ShowShapeListDialog();
 	// 在视图类与图形选择窗口之间同步选择状态
 	void OnShapeArrayUpdated();
+	afx_msg void OnTransformMove();
+	afx_msg void OnTransformScale();
 };
 
 #ifndef _DEBUG  // GeometrySketchpadView.cpp 中的调试版本

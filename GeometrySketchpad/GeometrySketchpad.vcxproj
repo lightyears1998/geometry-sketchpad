@@ -194,9 +194,11 @@
     <ClInclude Include="DialogArbitraryPolygon.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="DialogCircle.h" />
+    <ClInclude Include="DialogMove.h" />
     <ClInclude Include="DialogPoint.h" />
     <ClInclude Include="DialogSegment.h" />
     <ClInclude Include="DialogShapeSelection.h" />
+    <ClInclude Include="DialogScale.h" />
     <ClInclude Include="ObArray.hpp" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Polygon.h" />
@@ -215,9 +217,11 @@
     <ClCompile Include="DialogArbitraryPolygon.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="DialogCircle.cpp" />
+    <ClCompile Include="DialogMove.cpp" />
     <ClCompile Include="DialogPoint.cpp" />
     <ClCompile Include="DialogSegment.cpp" />
     <ClCompile Include="DialogShapeSelection.cpp" />
+    <ClCompile Include="DialogScale.cpp" />
     <ClCompile Include="GeometrySketchpad.cpp" />
     <ClCompile Include="GeometrySketchpadDoc.cpp" />
     <ClCompile Include="GeometrySketchpadView.cpp" />

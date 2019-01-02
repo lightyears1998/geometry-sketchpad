@@ -2,7 +2,6 @@
 
 #include "stdafx.h"
 
-
 // 所有几何图形的抽象基类
 class Shape : public CObject
 {
@@ -24,4 +23,10 @@ public:
 
 	// 周长计算函数
 	virtual double GetPerimeter() = 0;
+
+	// 缩放函数
+	virtual void Scale(double ratio) = 0;
+
+	// 平移函数
+	virtual void Move(double dx, double dy) = 0;
 };

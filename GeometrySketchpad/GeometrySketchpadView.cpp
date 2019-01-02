@@ -19,6 +19,9 @@
 #include "Polygon.h"
 #include "Circle.h"
 
+#include "DialogMove.h"
+#include "DialogScale.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -32,6 +35,8 @@ BEGIN_MESSAGE_MAP(CGeometrySketchpadView, CView)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_SETCURSOR()
 	ON_WM_MOUSEMOVE()
+	ON_COMMAND(IDM_TRANSFORM_MOVE, &CGeometrySketchpadView::OnTransformMove)
+	ON_COMMAND(IDM_TRANSFORM_SCALE, &CGeometrySketchpadView::OnTransformScale)
 END_MESSAGE_MAP()
 
 // CGeometrySketchpadView 构造/析构
@@ -301,4 +306,36 @@ void CGeometrySketchpadView::OnShapeArrayUpdated()
 	Invalidate();  // 使原有绘制失效，将最新的ShapeArray绘制到屏幕上
 	if (shape_selection_dialog.m_hWnd != nullptr)
 		shape_selection_dialog.OnShapeArrayUpdated();  // 同步“图形列表”窗口的状态
+}
+
+
+void CGeometrySketchpadView::OnTransformMove()
+{
+	CGeometrySketchpadDoc * doc = GetDocument();
+	PtArray<Shape> & shape_array = doc->shape_array;
+
+	DialogMove dlg;
+	if (dlg.DoModal() == IDOK) {
+		double dx = dlg.dx, dy = dlg.dy;
+		for (size_t i = 0; i < shape_array.GetCount(); ++i) if (shape_array.GetAt(i)->IsSelected) {
+			shape_array.GetAt(i)->Move(dx, dy);
+		}
+	}
+	doc->NotifyShapeArrayUpdated();
+}
+
+
+void CGeometrySketchpadView::OnTransformScale()
+{
+	CGeometrySketchpadDoc * doc = GetDocument();
+	PtArray<Shape> & shape_array = doc->shape_array;
+
+	DialogScale dlg;
+	if (dlg.DoModal() == IDOK) {
+		double ratio = dlg.ratio;
+		for (size_t i = 0; i < shape_array.GetCount(); ++i) if (shape_array.GetAt(i)->IsSelected) {
+			shape_array.GetAt(i)->Scale(ratio);
+		}
+	}
+	doc->NotifyShapeArrayUpdated();
 }

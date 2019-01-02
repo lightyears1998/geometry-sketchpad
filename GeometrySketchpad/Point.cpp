@@ -49,3 +49,17 @@ double Point::GetPerimeter()
 {
 	return 0.0;  // 点的周长为0
 }
+
+void Point::Scale(double ratio)
+{
+	x *= ratio;
+	y *= ratio;
+}
+
+void Point::Move(double dx, double dy)
+{
+	x += dx;
+	y += dy;
+}
+
+

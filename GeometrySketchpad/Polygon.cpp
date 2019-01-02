@@ -106,4 +106,20 @@ double ArbitraryPolygon::GetPerimeter()
 	return result;
 }
 
+void ArbitraryPolygon::Scale(double ratio)
+{
+	for (size_t i = 0; i < vertexs.GetCount(); ++i) {
+		vertexs.GetAt(i).x *= ratio;
+		vertexs.GetAt(i).y *= ratio;
+	}
+}
+
+void ArbitraryPolygon::Move(double dx, double dy)
+{
+	for (size_t i = 0; i < vertexs.GetCount(); ++i) {
+		vertexs.GetAt(i).x += dx;
+		vertexs.GetAt(i).y += dy;
+	}
+}
+
 

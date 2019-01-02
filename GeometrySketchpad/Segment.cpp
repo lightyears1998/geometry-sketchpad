@@ -36,3 +36,15 @@ double Segment::GetPerimeter()
 {
 	return hypot(head.x - tail.x, head.y - tail.y);
 }
+
+void Segment::Scale(double ratio)
+{
+	head.x *= ratio; tail.x *= ratio;
+	head.y *= ratio; tail.y *= ratio;
+}
+
+void Segment::Move(double dx, double dy)
+{
+	head.x += dx; head.y += dy;
+	tail.x += dx; head.y += dy;
+}

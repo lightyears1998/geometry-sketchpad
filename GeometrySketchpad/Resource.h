@@ -12,6 +12,8 @@
 #define IDD_CIRCLE                      315
 #define IDD_SEGMENT                     317
 #define IDD_ARTBITRARY_POLYGON          319
+#define IDD_SCALE                       321
+#define IDD_MOVE                        323
 #define IDC_EDIT_X                      1000
 #define IDC_EDIT_Y                      1001
 #define IDC_TREE                        1002
@@ -74,7 +76,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        321
+#define _APS_NEXT_RESOURCE_VALUE        325
 #define _APS_NEXT_COMMAND_VALUE         32814
 #define _APS_NEXT_CONTROL_VALUE         1015
 #define _APS_NEXT_SYMED_VALUE           310

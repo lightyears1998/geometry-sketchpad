@@ -314,16 +314,20 @@ void CMainFrame::OnCalcSelArea()
 {
 	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
 	
+	bool has_selection = false;
 	double result = 0;
 	for (size_t i = 0; i < doc->shape_array.GetCount(); ++i) {
 		Shape * shape = doc->shape_array.GetAt(i);
-		if (shape->IsSelected) 
-			result += shape->GetArea();
+		if (shape->IsSelected)
+			result += shape->GetArea(), has_selection = true;
 	}
 
 	CString str;
 	str.Format(TEXT("%f"), result);
-	MessageBox(str, TEXT("选定图形的面积"));
+	if (has_selection)
+		MessageBox(str, TEXT("选定图形的面积"));
+	else
+		MessageBox(TEXT("当前没有选中图形呀~"), TEXT("提示"));
 }
 
 
@@ -331,16 +335,20 @@ void CMainFrame::OnCalcSelPrerimeter()
 {
 	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
 	
+	bool has_selection = false;
 	double result = 0;
 	for (size_t i = 0; i < doc->shape_array.GetCount(); ++i) {
 		Shape * shape = doc->shape_array.GetAt(i);
 		if (shape->IsSelected)
-			result += shape->GetPerimeter();
+			result += shape->GetPerimeter(), has_selection = true;
 	}
 
 	CString str;
 	str.Format(TEXT("%f"), result);
-	MessageBox(str, TEXT("选定图形的面周长"));
+	if (has_selection)
+		MessageBox(str, TEXT("选定图形的面周长"));
+	else 
+		MessageBox(TEXT("当前没有选中图形呀~"), TEXT("提示"));
 }
 
 

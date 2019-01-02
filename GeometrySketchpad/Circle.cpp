@@ -43,3 +43,14 @@ double Circle::GetPerimeter()
 	const double PI = acos(-1);
 	return 2 * PI * radius;
 }
+
+void Circle::Scale(double ratio)
+{
+	radius *= ratio;
+}
+
+void Circle::Move(double dx, double dy)
+{
+	center.x += dx;
+	center.y += dy;
+}

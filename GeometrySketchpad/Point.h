@@ -31,4 +31,6 @@ public:
 	virtual void OnDraw(CDC* pDC);
 	virtual double GetArea();
 	virtual double GetPerimeter();
+	virtual void Scale(double ratio);
+	virtual void Move(double dx, double dy);
 };
