@@ -114,6 +114,11 @@ void DialogArbitraryPolygon::OnBnClickedButtonRemove()
 void DialogArbitraryPolygon::OnBnClickedOk()
 {
 	int count = list.GetItemCount();
+
+	if (!count) {
+		MessageBox(TEXT("请至少添加一个顶点"));
+	}
+
 	for (int i = 0; i < count; ++i) {
 		double x = _ttoi(list.GetItemText(i, 0));
 		double y = _ttoi(list.GetItemText(i, 1));

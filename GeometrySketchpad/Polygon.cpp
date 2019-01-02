@@ -87,7 +87,13 @@ double ArbitraryPolygon::GetArea()
 	}
 	else if (vertexs.GetCount() > 3) {
 		// 分解成多个三角形计算面积再合并
-		
+		for (size_t i = 2; i < vertexs.GetCount(); ++i) {
+			ObArray<Point> triangle_vertexs;
+			triangle_vertexs.Add(vertexs.GetAt(i));
+			triangle_vertexs.Add(vertexs.GetAt(i - 1));
+			triangle_vertexs.Add(vertexs.GetAt(0));
+			result += ArbitraryPolygon(triangle_vertexs).GetArea();
+		}
 	}
 
 	return result;

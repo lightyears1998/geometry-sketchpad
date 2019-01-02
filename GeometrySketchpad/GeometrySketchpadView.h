@@ -64,6 +64,7 @@ public:
 	void OnShapeArrayUpdated();
 	afx_msg void OnTransformMove();
 	afx_msg void OnTransformScale();
+	afx_msg void OnStatistics();
 };
 
 #ifndef _DEBUG  // GeometrySketchpadView.cpp 中的调试版本

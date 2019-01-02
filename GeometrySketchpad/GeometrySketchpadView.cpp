@@ -37,6 +37,7 @@ BEGIN_MESSAGE_MAP(CGeometrySketchpadView, CView)
 	ON_WM_MOUSEMOVE()
 	ON_COMMAND(IDM_TRANSFORM_MOVE, &CGeometrySketchpadView::OnTransformMove)
 	ON_COMMAND(IDM_TRANSFORM_SCALE, &CGeometrySketchpadView::OnTransformScale)
+	ON_COMMAND(IDM_STATISTICS, &CGeometrySketchpadView::OnStatistics)
 END_MESSAGE_MAP()
 
 // CGeometrySketchpadView 构造/析构
@@ -317,8 +318,15 @@ void CGeometrySketchpadView::OnTransformMove()
 	DialogMove dlg;
 	if (dlg.DoModal() == IDOK) {
 		double dx = dlg.dx, dy = dlg.dy;
+
+		bool has_select = false;
 		for (size_t i = 0; i < shape_array.GetCount(); ++i) if (shape_array.GetAt(i)->IsSelected) {
 			shape_array.GetAt(i)->Move(dx, dy);
+			has_select = true;
+		}
+
+		if (!has_select) {
+			MessageBox(TEXT("当前没有选择图形喵~"));
 		}
 	}
 	doc->NotifyShapeArrayUpdated();
@@ -333,9 +341,27 @@ void CGeometrySketchpadView::OnTransformScale()
 	DialogScale dlg;
 	if (dlg.DoModal() == IDOK) {
 		double ratio = dlg.ratio;
+
+		bool has_select = false;
 		for (size_t i = 0; i < shape_array.GetCount(); ++i) if (shape_array.GetAt(i)->IsSelected) {
 			shape_array.GetAt(i)->Scale(ratio);
+			has_select = true;
+		}
+
+		if (!has_select) {
+			MessageBox(TEXT("当前没有选择图形喵~"));
 		}
 	}
 	doc->NotifyShapeArrayUpdated();
+}
+
+
+void CGeometrySketchpadView::OnStatistics()
+{
+	CGeometrySketchpadDoc * doc = GetDocument();
+	PtArray<Shape> & shape_array = doc->shape_array;
+
+	int count = int(shape_array.GetCount());
+	CString prompt; prompt.Format(TEXT("%d"), count);
+	MessageBox(prompt, TEXT("图形数量统计"));
 }
