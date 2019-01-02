@@ -9,6 +9,7 @@
 #include "DialogPoint.h"
 #include "DialogSegment.h"
 #include "DialogCircle.h"
+#include "DialogArbitraryPolygon.h"
 
 #include "Shape.h"
 #include "Segment.h"
@@ -41,6 +42,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_COMMAND(ID_VIEW_SHAPE_LIST, &CMainFrame::OnViewShapeList)
 	ON_COMMAND(ID_ADD_CIRCLE, &CMainFrame::OnAddCircle)
 	ON_COMMAND(ID_ADD_SEGMENT, &CMainFrame::OnAddSegment)
+	ON_COMMAND(ID_ADD_ARTBITTRARY_POLOGEN, &CMainFrame::OnAddArtbittraryPologen)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -251,6 +253,21 @@ void CMainFrame::OnAddSegment()
 		double x1 = dlg.coordinate_x1, y1 = dlg.coordinate_y1;
 		double x2 = dlg.coordinate_x2, y2 = dlg.coordinate_y2;
 		doc->shape_array.Add(new Segment(Point(x1, y1), Point(x2, y2)));
+	}
+	doc->NotifyShapeArrayUpdated();
+}
+
+
+void CMainFrame::OnAddArtbittraryPologen()
+{
+	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
+	ObArray<Point> vertexs;
+	
+	DialogArbitraryPolygon dlg;	
+	dlg.vertexs = &vertexs;
+
+	if (dlg.DoModal() == IDOK) {
+		doc->shape_array.Add(new ArbitraryPolygon(vertexs));
 	}
 	doc->NotifyShapeArrayUpdated();
 }

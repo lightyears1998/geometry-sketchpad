@@ -1,6 +1,5 @@
 #pragma once
 
-
 // DialogPoint dialog
 
 class DialogPoint : public CDialogEx

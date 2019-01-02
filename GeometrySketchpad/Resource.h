@@ -11,7 +11,7 @@
 #define IDD_SHAPE_SELECTION             313
 #define IDD_CIRCLE                      315
 #define IDD_SEGMENT                     317
-#define IDD_ARTBITRARY_POLOGEN          319
+#define IDD_ARTBITRARY_POLYGON          319
 #define IDC_EDIT_X                      1000
 #define IDC_EDIT_Y                      1001
 #define IDC_TREE                        1002
@@ -21,9 +21,10 @@
 #define IDC_EDIT3                       1006
 #define IDC_EDIT4                       1007
 #define IDC_BUTTON1                     1007
-#define IDC_LIST1                       1010
-#define IDC_BUTTON2                     1011
-#define IDC_BUTTON3                     1012
+#define IDC_LIST                        1010
+#define IDC_BUTTON_MODIFY               1011
+#define IDC_BUTTON_REMOVE               1012
+#define IDC_BUTTON_ADD                  1013
 #define ID_DRAW_POINT                   32772
 #define ID_MOUSE_DRAW_POINT             32772
 #define ID_DRAW_LINE                    32774
@@ -72,7 +73,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        321
 #define _APS_NEXT_COMMAND_VALUE         32812
-#define _APS_NEXT_CONTROL_VALUE         1013
+#define _APS_NEXT_CONTROL_VALUE         1014
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

@@ -72,7 +72,7 @@ BOOL DialogShapeSelection::OnInitDialog()
 void DialogShapeSelection::OnBnClickedButtonSelect()
 {
 	for (HTREEITEM item = shape_tree.GetRootItem(); item; item = shape_tree.GetNextItem(item, TVGN_NEXT)) {
-		UINT32 index(shape_tree.GetItemData(item));
+		UINT32 index = UINT32(shape_tree.GetItemData(item));
 		shape_array->GetAt(index)->IsSelected = shape_tree.GetCheck(item);
 	}
 	doc->NotifyShapeArrayUpdated();

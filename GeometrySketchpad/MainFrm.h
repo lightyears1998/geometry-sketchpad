@@ -50,6 +50,7 @@ public:
 	afx_msg void OnViewShapeList();
 	afx_msg void OnAddCircle();
 	afx_msg void OnAddSegment();
+	afx_msg void OnAddArtbittraryPologen();
 };
 
 

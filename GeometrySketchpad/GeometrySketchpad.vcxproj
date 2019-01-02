@@ -191,6 +191,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DialogArbitraryPolygon.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="DialogCircle.h" />
     <ClInclude Include="DialogPoint.h" />
@@ -211,6 +212,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DialogArbitraryPolygon.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="DialogCircle.cpp" />
     <ClCompile Include="DialogPoint.cpp" />
