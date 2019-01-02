@@ -20,7 +20,8 @@
 #define IDC_EDIT2                       1005
 #define IDC_EDIT3                       1006
 #define IDC_EDIT4                       1007
-#define IDC_BUTTON1                     1007
+#define IDC_BUTTON_SELECT_ALL           1007
+#define IDC_BUTTON_DESELECT             1008
 #define IDC_LIST                        1010
 #define IDC_BUTTON_MODIFY               1011
 #define IDC_BUTTON_REMOVE               1012
@@ -66,14 +67,16 @@
 #define IDM_CALC_ALL_PRERIMETER         32809
 #define IDM_CALC_SEL_AREA               32810
 #define IDM_CALC_ALL_AREA               32811
+#define ID_32812                        32812
+#define IDM_REMOVE_SELECTED             32813
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        321
-#define _APS_NEXT_COMMAND_VALUE         32812
-#define _APS_NEXT_CONTROL_VALUE         1014
+#define _APS_NEXT_COMMAND_VALUE         32814
+#define _APS_NEXT_CONTROL_VALUE         1015
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif
