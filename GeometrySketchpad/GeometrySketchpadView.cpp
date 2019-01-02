@@ -303,5 +303,6 @@ void CGeometrySketchpadView::ShowShapeListDialog()
 void CGeometrySketchpadView::OnShapeArrayUpdated()
 {
 	Invalidate();  // 使原有绘制失效，将最新的ShapeArray绘制到屏幕上
-	shape_selection_dialog.OnShapeArrayUpdated();  // 同步“图形列表”窗口的状态
+	if (shape_selection_dialog.m_hWnd != nullptr)
+		shape_selection_dialog.OnShapeArrayUpdated();  // 同步“图形列表”窗口的状态
 }

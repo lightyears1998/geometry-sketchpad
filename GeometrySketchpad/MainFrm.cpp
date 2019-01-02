@@ -7,6 +7,8 @@
 #include "GeometrySketchpadView.h"
 
 #include "DialogPoint.h"
+#include "DialogSegment.h"
+#include "DialogCircle.h"
 
 #include "Shape.h"
 #include "Segment.h"
@@ -38,6 +40,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_COMMAND(ID_MOUSE_DRAW_CIRCLE, &CMainFrame::OnMouseDrawCircle)
 	ON_COMMAND(ID_VIEW_SHAPE_LIST, &CMainFrame::OnViewShapeList)
 	ON_COMMAND(ID_ADD_CIRCLE, &CMainFrame::OnAddCircle)
+	ON_COMMAND(ID_ADD_SEGMENT, &CMainFrame::OnAddSegment)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -169,7 +172,17 @@ void CMainFrame::OnAddPoint()
 void CMainFrame::OnAddCircle()
 {
 	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
+	
+	DialogCircle dlg;
+	if (dlg.DoModal() == IDOK) {
+		double x = dlg.coordinate_x, y = dlg.coordinate_y;
+		double radius = dlg.radius;
+		doc->shape_array.Add(new Circle(Point(x, y), radius));
+	}
+	doc->NotifyShapeArrayUpdated();
 }
+
+
 
 
 void CMainFrame::OnMouseSelecton()
@@ -227,3 +240,17 @@ void CMainFrame::OnViewShapeList()
 	view->ShowShapeListDialog();
 }
 
+
+
+void CMainFrame::OnAddSegment()
+{
+	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
+	DialogSegment dlg;
+
+	if (dlg.DoModal() == IDOK) {
+		double x1 = dlg.coordinate_x1, y1 = dlg.coordinate_y1;
+		double x2 = dlg.coordinate_x2, y2 = dlg.coordinate_y2;
+		doc->shape_array.Add(new Segment(Point(x1, y1), Point(x2, y2)));
+	}
+	doc->NotifyShapeArrayUpdated();
+}

@@ -30,8 +30,6 @@ void DialogShapeSelection::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(DialogShapeSelection, CDialogEx)
-//	ON_NOTIFY(TVN_SELCHANGED, IDC_TREE, &DialogShapeSelection::OnSelchangedTree)
-//	ON_NOTIFY(NM_CLICK, IDC_TREE, &DialogShapeSelection::OnClickTree)
 ON_BN_CLICKED(IDC_BUTTON_SELECT, &DialogShapeSelection::OnBnClickedButtonSelect)
 END_MESSAGE_MAP()
 
@@ -46,7 +44,7 @@ void DialogShapeSelection::OnShapeArrayUpdated()
 	size_t count = shape_array->GetCount();
 	for (size_t i = 0; i < count; ++i) {
 		Shape * shape = shape_array->GetAt(i);
-		UINT32 index(i);
+		UINT32 index = UINT32(i);
 		CString & identifier = shape->Identifier;
 		HTREEITEM item = shape_tree.InsertItem(identifier);
 		shape_tree.SetCheck(item, shape->IsSelected);

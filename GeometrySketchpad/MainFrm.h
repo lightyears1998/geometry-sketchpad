@@ -49,6 +49,7 @@ public:
 	afx_msg void OnMouseDrawCircle();
 	afx_msg void OnViewShapeList();
 	afx_msg void OnAddCircle();
+	afx_msg void OnAddSegment();
 };
 
 
