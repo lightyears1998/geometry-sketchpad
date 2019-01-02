@@ -31,4 +31,5 @@ public:
 	afx_msg void OnBnClickedButtonSelect();
 	afx_msg void OnBnClickedButtonSelectAll();
 	afx_msg void OnBnClickedButtonDeselect();
+	afx_msg void OnBnClickedButtonRemove();
 };

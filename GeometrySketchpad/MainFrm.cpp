@@ -47,6 +47,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_COMMAND(IDM_CALC_ALL_PRERIMETER, &CMainFrame::OnCalcAllPrerimeter)
 	ON_COMMAND(IDM_CALC_SEL_AREA, &CMainFrame::OnCalcSelArea)
 	ON_COMMAND(IDM_CALC_SEL_PRERIMETER, &CMainFrame::OnCalcSelPrerimeter)
+	ON_COMMAND(IDM_REMOVE_SELECTED, &CMainFrame::OnRemoveSelected)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -340,4 +341,27 @@ void CMainFrame::OnCalcSelPrerimeter()
 	CString str;
 	str.Format(TEXT("%f"), result);
 	MessageBox(str, TEXT("选定图形的面周长"));
+}
+
+
+void CMainFrame::OnRemoveSelected()
+{
+	if (MessageBox(TEXT("确认要进行删除喵？"), TEXT("删除确认"), MB_OKCANCEL) == IDOK) {
+		bool removed = false;
+		CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
+
+		for (size_t i = doc->shape_array.GetCount(); i; --i) {  // 自后向前遍历数组，并删除具有选中标记的图形
+			if (doc->shape_array.GetAt(i - 1)->IsSelected) {
+				doc->shape_array.Remove(i - 1);
+				removed = true;
+			}
+		}
+
+		if (!removed) {
+			MessageBox(TEXT("还没有选择图形呢~"), TEXT("用户提示"));
+		}
+		else {
+			doc->NotifyShapeArrayUpdated();
+		}
+	}
 }

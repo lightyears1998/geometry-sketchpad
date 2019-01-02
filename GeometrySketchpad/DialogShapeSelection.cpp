@@ -33,6 +33,7 @@ BEGIN_MESSAGE_MAP(DialogShapeSelection, CDialogEx)
 ON_BN_CLICKED(IDC_BUTTON_SELECT, &DialogShapeSelection::OnBnClickedButtonSelect)
 ON_BN_CLICKED(IDC_BUTTON_SELECT_ALL, &DialogShapeSelection::OnBnClickedButtonSelectAll)
 ON_BN_CLICKED(IDC_BUTTON_DESELECT, &DialogShapeSelection::OnBnClickedButtonDeselect)
+ON_BN_CLICKED(IDC_BUTTON_REMOVE, &DialogShapeSelection::OnBnClickedButtonRemove)
 END_MESSAGE_MAP()
 
 
@@ -93,5 +94,27 @@ void DialogShapeSelection::OnBnClickedButtonDeselect()
 {
 	for (HTREEITEM item = shape_tree.GetRootItem(); item; item = shape_tree.GetNextItem(item, TVGN_NEXT)) {
 		shape_tree.SetCheck(item, false);
+	}
+}
+
+
+void DialogShapeSelection::OnBnClickedButtonRemove()
+{
+	if (MessageBox(TEXT("确认要进行删除喵？"), TEXT("删除确认"), MB_OKCANCEL) == IDOK) {
+		bool removed = false;
+
+		for (size_t i = doc->shape_array.GetCount(); i; --i) {  // 自后向前遍历数组，并删除具有选中标记的图形
+			if (shape_array->GetAt(i - 1)->IsSelected) {
+				shape_array->Remove(i - 1);
+				removed = true;
+			}
+		}
+
+		if (!removed) {
+			MessageBox(TEXT("还没有选择图形呢~"), TEXT("用户提示"));
+		}
+		else {
+			doc->NotifyShapeArrayUpdated();
+		}
 	}
 }

@@ -55,6 +55,7 @@ public:
 	afx_msg void OnCalcAllPrerimeter();
 	afx_msg void OnCalcSelArea();
 	afx_msg void OnCalcSelPrerimeter();
+	afx_msg void OnRemoveSelected();
 };
 
 
