@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Polygon.h"
 #include "Point.h"
+#include "Segment.h"
 
 
 IMPLEMENT_SERIAL(ArbitraryPolygon, CObject, 1)
@@ -74,13 +75,31 @@ void ArbitraryPolygon::OnDraw(CDC * pDC)
 
 double ArbitraryPolygon::GetArea()
 {
-	return 0.0;
+	double result = 0;
+	
+	// 使用海伦公式计算三角形的面积
+	if (vertexs.GetCount() == 3) {
+		double a = Segment(vertexs.GetAt(0), vertexs.GetAt(1)).GetPerimeter();
+		double b = Segment(vertexs.GetAt(1), vertexs.GetAt(2)).GetPerimeter();
+		double c = Segment(vertexs.GetAt(2), vertexs.GetAt(0)).GetPerimeter();
+		double half_total = (a + b + c) / 2;
+		result = sqrt(half_total * (half_total - a) * (half_total - b) * (half_total - c));
+	}
+
+	return result;
 }
 
 
 double ArbitraryPolygon::GetPerimeter()
 {
-	return 0.0;
+	double result = 0;
+
+	for (size_t i = 1; i < vertexs.GetCount(); ++i) {
+		result += Segment(vertexs.GetAt(i), vertexs.GetAt(i-1)).GetPerimeter();
+	}
+	result += Segment(vertexs.GetAt(0), vertexs.GetAt(vertexs.GetCount() - 1)).GetPerimeter();
+
+	return result;
 }
 
 

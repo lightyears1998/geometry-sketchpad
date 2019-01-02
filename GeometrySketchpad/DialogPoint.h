@@ -1,19 +1,19 @@
 #pragma once
 
 
-// DialogAddPoint dialog
+// DialogPoint dialog
 
-class DialogAddPoint : public CDialogEx
+class DialogPoint : public CDialogEx
 {
-	DECLARE_DYNAMIC(DialogAddPoint)
+	DECLARE_DYNAMIC(DialogPoint)
 
 public:
-	DialogAddPoint(CWnd* pParent = nullptr);   // standard constructor
-	virtual ~DialogAddPoint();
+	DialogPoint(CWnd* pParent = nullptr);   // standard constructor
+	virtual ~DialogPoint();
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_ADD_POINT };
+	enum { IDD = IDD_POINT };
 #endif
 
 protected:

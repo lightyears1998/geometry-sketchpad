@@ -192,7 +192,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
-    <ClInclude Include="DialogAddPoint.h" />
+    <ClInclude Include="DialogCircle.h" />
+    <ClInclude Include="DialogPoint.h" />
     <ClInclude Include="DialogShapeSelection.h" />
     <ClInclude Include="ObArray.hpp" />
     <ClInclude Include="Point.h" />
@@ -210,7 +211,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
-    <ClCompile Include="DialogAddPoint.cpp" />
+    <ClCompile Include="DialogCircle.cpp" />
+    <ClCompile Include="DialogPoint.cpp" />
     <ClCompile Include="DialogShapeSelection.cpp" />
     <ClCompile Include="GeometrySketchpad.cpp" />
     <ClCompile Include="GeometrySketchpadDoc.cpp" />
