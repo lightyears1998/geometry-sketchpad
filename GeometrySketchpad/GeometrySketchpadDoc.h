@@ -18,8 +18,6 @@ public:
 
 // 操作
 public:
-	// 设置指定图形的选中状态
-	void SelectShape(size_t index, bool is_selected);
 
 // 重写
 public:

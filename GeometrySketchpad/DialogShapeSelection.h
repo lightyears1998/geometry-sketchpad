@@ -28,5 +28,7 @@ public:
 	void OnShapeArrayUpdated();
 	CTreeCtrl shape_tree;
 	virtual BOOL OnInitDialog();
-	afx_msg void OnSelchangedTree(NMHDR *pNMHDR, LRESULT *pResult);
+//	afx_msg void OnSelchangedTree(NMHDR *pNMHDR, LRESULT *pResult);
+//	afx_msg void OnClickTree(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnBnClickedButtonSelect();
 };

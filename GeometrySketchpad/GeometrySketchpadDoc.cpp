@@ -38,11 +38,11 @@ CGeometrySketchpadDoc::~CGeometrySketchpadDoc()
 {
 }
 
-void CGeometrySketchpadDoc::SelectShape(size_t index, bool is_selected)
-{
-	shape_array.GetAt(index)->IsSelected = is_selected;
-	NotifyShapeArrayUpdated();
-}
+//void CGeometrySketchpadDoc::SelectShape(size_t index, bool is_selected)
+//{
+//	shape_array.GetAt(index)->IsSelected = is_selected;
+//	NotifyShapeArrayUpdated();
+//}
 
 BOOL CGeometrySketchpadDoc::OnNewDocument()
 {
