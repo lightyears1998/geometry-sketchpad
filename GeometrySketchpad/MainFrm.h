@@ -51,6 +51,10 @@ public:
 	afx_msg void OnAddCircle();
 	afx_msg void OnAddSegment();
 	afx_msg void OnAddArtbittraryPologen();
+	afx_msg void OnCalcAllArea();
+	afx_msg void OnCalcAllPrerimeter();
+	afx_msg void OnCalcSelArea();
+	afx_msg void OnCalcSelPrerimeter();
 };
 
 

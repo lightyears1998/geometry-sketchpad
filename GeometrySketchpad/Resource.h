@@ -20,7 +20,9 @@
 #define IDC_EDIT2                       1005
 #define IDC_EDIT3                       1006
 #define IDC_EDIT4                       1007
-#define IDC_BUTTON1                     1007
+#define IDC_BUTTON_SELECT_ALL           1007
+#define IDC_BUTTON2                     1008
+#define IDC_BUTTON_DESELECT             1008
 #define IDC_LIST                        1010
 #define IDC_BUTTON_MODIFY               1011
 #define IDC_BUTTON_REMOVE               1012

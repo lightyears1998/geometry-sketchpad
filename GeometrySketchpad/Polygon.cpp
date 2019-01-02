@@ -85,6 +85,10 @@ double ArbitraryPolygon::GetArea()
 		double half_total = (a + b + c) / 2;
 		result = sqrt(half_total * (half_total - a) * (half_total - b) * (half_total - c));
 	}
+	else if (vertexs.GetCount() > 3) {
+		// 分解成多个三角形计算面积再合并
+		
+	}
 
 	return result;
 }

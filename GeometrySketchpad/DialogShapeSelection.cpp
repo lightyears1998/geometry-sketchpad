@@ -31,6 +31,8 @@ void DialogShapeSelection::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(DialogShapeSelection, CDialogEx)
 ON_BN_CLICKED(IDC_BUTTON_SELECT, &DialogShapeSelection::OnBnClickedButtonSelect)
+ON_BN_CLICKED(IDC_BUTTON_SELECT_ALL, &DialogShapeSelection::OnBnClickedButtonSelectAll)
+ON_BN_CLICKED(IDC_BUTTON_DESELECT, &DialogShapeSelection::OnBnClickedButtonDeselect)
 END_MESSAGE_MAP()
 
 
@@ -76,4 +78,20 @@ void DialogShapeSelection::OnBnClickedButtonSelect()
 		shape_array->GetAt(index)->IsSelected = shape_tree.GetCheck(item);
 	}
 	doc->NotifyShapeArrayUpdated();
+}
+
+
+void DialogShapeSelection::OnBnClickedButtonSelectAll()
+{
+	for (HTREEITEM item = shape_tree.GetRootItem(); item; item = shape_tree.GetNextItem(item, TVGN_NEXT)) {
+		shape_tree.SetCheck(item, true);
+	}
+}
+
+
+void DialogShapeSelection::OnBnClickedButtonDeselect()
+{
+	for (HTREEITEM item = shape_tree.GetRootItem(); item; item = shape_tree.GetNextItem(item, TVGN_NEXT)) {
+		shape_tree.SetCheck(item, false);
+	}
 }

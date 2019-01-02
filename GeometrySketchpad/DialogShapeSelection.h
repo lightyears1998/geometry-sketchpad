@@ -29,4 +29,6 @@ public:
 	CTreeCtrl shape_tree;
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClickedButtonSelect();
+	afx_msg void OnBnClickedButtonSelectAll();
+	afx_msg void OnBnClickedButtonDeselect();
 };

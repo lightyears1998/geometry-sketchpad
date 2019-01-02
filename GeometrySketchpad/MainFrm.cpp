@@ -43,6 +43,10 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_COMMAND(ID_ADD_CIRCLE, &CMainFrame::OnAddCircle)
 	ON_COMMAND(ID_ADD_SEGMENT, &CMainFrame::OnAddSegment)
 	ON_COMMAND(ID_ADD_ARTBITTRARY_POLOGEN, &CMainFrame::OnAddArtbittraryPologen)
+	ON_COMMAND(IDM_CALC_ALL_AREA, &CMainFrame::OnCalcAllArea)
+	ON_COMMAND(IDM_CALC_ALL_PRERIMETER, &CMainFrame::OnCalcAllPrerimeter)
+	ON_COMMAND(IDM_CALC_SEL_AREA, &CMainFrame::OnCalcSelArea)
+	ON_COMMAND(IDM_CALC_SEL_PRERIMETER, &CMainFrame::OnCalcSelPrerimeter)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -270,4 +274,70 @@ void CMainFrame::OnAddArtbittraryPologen()
 		doc->shape_array.Add(new ArbitraryPolygon(vertexs));
 	}
 	doc->NotifyShapeArrayUpdated();
+}
+
+
+void CMainFrame::OnCalcAllArea()
+{
+	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
+
+	double result = 0;
+	for (size_t i = 0; i < doc->shape_array.GetCount(); ++i) {
+		Shape * shape = doc->shape_array.GetAt(i);
+		result += shape->GetArea();
+	}
+	
+	CString str;
+	str.Format(TEXT("%f"), result);
+	MessageBox(str, TEXT("所有图形的面积"));
+}
+
+
+void CMainFrame::OnCalcAllPrerimeter()
+{
+	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
+
+	double result = 0;
+	for (size_t i = 0; i < doc->shape_array.GetCount(); ++i) {
+		Shape * shape = doc->shape_array.GetAt(i);
+		result += shape->GetPerimeter();
+	}
+
+	CString str;
+	str.Format(TEXT("%f"), result);
+	MessageBox(str, TEXT("所有图形的周长"));
+}
+
+
+void CMainFrame::OnCalcSelArea()
+{
+	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
+	
+	double result = 0;
+	for (size_t i = 0; i < doc->shape_array.GetCount(); ++i) {
+		Shape * shape = doc->shape_array.GetAt(i);
+		if (shape->IsSelected) 
+			result += shape->GetArea();
+	}
+
+	CString str;
+	str.Format(TEXT("%f"), result);
+	MessageBox(str, TEXT("选定图形的面积"));
+}
+
+
+void CMainFrame::OnCalcSelPrerimeter()
+{
+	CGeometrySketchpadDoc * doc = (CGeometrySketchpadDoc *)GetActiveDocument();
+	
+	double result = 0;
+	for (size_t i = 0; i < doc->shape_array.GetCount(); ++i) {
+		Shape * shape = doc->shape_array.GetAt(i);
+		if (shape->IsSelected)
+			result += shape->GetPerimeter();
+	}
+
+	CString str;
+	str.Format(TEXT("%f"), result);
+	MessageBox(str, TEXT("选定图形的面周长"));
 }
