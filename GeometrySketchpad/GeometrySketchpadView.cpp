@@ -63,9 +63,6 @@ void CGeometrySketchpadView::OnDraw(CDC* pDC)
 	if (!pDoc)
 		return;
 
-	// 应尝试双缓冲技术以减少闪烁
-	// https://mykbn.wordpress.com/2013/06/24/double-buffering-technique-in-mfc-for-flicker-free-drawing/
-
 	size_t count;
 
 	count = realtime_feedback.GetCount();  
@@ -78,8 +75,6 @@ void CGeometrySketchpadView::OnDraw(CDC* pDC)
 	for (size_t i = 0; i < count; ++i) {
 		shape_array.GetAt(i)->OnDraw(pDC);
 	}
-
-	
 }
 
 
