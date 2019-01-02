@@ -12,6 +12,7 @@ public:
 	DialogShapeSelection(CWnd* pParent = nullptr);   // standard constructor
 	virtual ~DialogShapeSelection();
 	
+	CGeometrySketchpadDoc * doc = nullptr;
 	PtArray<Shape> * shape_array = nullptr;
 
 // Dialog Data
@@ -24,7 +25,8 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	void UpdateShapeState();
+	void OnShapeArrayUpdated();
 	CTreeCtrl shape_tree;
 	virtual BOOL OnInitDialog();
+	afx_msg void OnSelchangedTree(NMHDR *pNMHDR, LRESULT *pResult);
 };

@@ -6,7 +6,7 @@
 IMPLEMENT_SERIAL(Circle, CObject, 1)
 void Circle::Serialize(CArchive & ar)
 {
-	CObject::Serialize(ar);
+	Shape::Serialize(ar);
 
 	if (ar.IsStoring()) {
 		center.Serialize(ar);

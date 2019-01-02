@@ -4,7 +4,7 @@
 IMPLEMENT_SERIAL(Point, CObject, 1)
 void Point::Serialize(CArchive &ar)
 {
-	CObject::Serialize(ar);
+	Shape::Serialize(ar);
 
 	if (ar.IsStoring()) {  // ´¢´æ¹ý³Ì
 		ar << x << y;

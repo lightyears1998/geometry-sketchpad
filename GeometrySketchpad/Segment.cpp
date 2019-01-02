@@ -4,7 +4,7 @@
 IMPLEMENT_SERIAL(Segment, CObject, 1)
 void Segment::Serialize(CArchive & ar)
 {
-	CObject::Serialize(ar);
+	Shape::Serialize(ar);
 
 	if (ar.IsStoring()) {  // ´æ´¢¹ý³Ì
 		head.Serialize(ar);

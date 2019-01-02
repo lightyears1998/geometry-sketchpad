@@ -10,8 +10,12 @@ class Segment : public Shape
 public:
 	Point head, tail;  // 线段的起点和终点
 
-	Segment() = default;
-	Segment(const Point &head, const Point &tail) : head(head), tail(tail) {};
+	Segment() {
+		Identifier = TEXT("线段");
+	};
+	Segment(const Point &head, const Point &tail) : head(head), tail(tail) {
+		Identifier = TEXT("线段");
+	};
 
 	DECLARE_SERIAL(Segment)
 	virtual void Serialize(CArchive &ar);

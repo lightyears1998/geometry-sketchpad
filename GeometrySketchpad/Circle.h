@@ -10,8 +10,12 @@ public:
 	Point center;  // Ô²ÐÄ
 	double radius;  // °ë¾¶
 
-	Circle() : center(0, 0), radius(0) {};
-	Circle(Point center, double radius) : center(center), radius(radius) {};
+	Circle() : center(0, 0), radius(0) {
+		Identifier = TEXT("Ô²");
+	};
+	Circle(Point center, double radius) : center(center), radius(radius) {
+		Identifier = TEXT("Ô²");
+	};
 
 	DECLARE_SERIAL(Circle)
 	virtual void Serialize(CArchive &ar);

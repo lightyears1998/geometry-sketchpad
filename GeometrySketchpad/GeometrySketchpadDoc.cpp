@@ -38,6 +38,12 @@ CGeometrySketchpadDoc::~CGeometrySketchpadDoc()
 {
 }
 
+void CGeometrySketchpadDoc::SelectShape(size_t index, bool is_selected)
+{
+	shape_array.GetAt(index)->IsSelected = is_selected;
+	NotifyShapeArrayUpdated();
+}
+
 BOOL CGeometrySketchpadDoc::OnNewDocument()
 {
 	if (!CDocument::OnNewDocument())
@@ -147,3 +153,12 @@ void CGeometrySketchpadDoc::Dump(CDumpContext& dc) const
 
 
 // CGeometrySketchpadDoc 命令
+
+
+// 通知View类ShapeArray已经发生改变
+void CGeometrySketchpadDoc::NotifyShapeArrayUpdated()
+{
+	POSITION view_postion = GetFirstViewPosition();
+	CGeometrySketchpadView * view = (CGeometrySketchpadView *)GetNextView(view_postion);
+	view->OnShapeArrayUpdated();
+}

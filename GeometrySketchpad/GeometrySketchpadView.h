@@ -60,11 +60,8 @@ public:
 	void RestoreDefaultState();
 	// 显示“图形列表”窗口
 	void ShowShapeListDialog();
-	// 将特定的图形标记为选取状态
-	void SelectShape(size_t index, bool is_selected);
-protected:
 	// 在视图类与图形选择窗口之间同步选择状态
-	void SyncShapeState();
+	void OnShapeArrayUpdated();
 };
 
 #ifndef _DEBUG  // GeometrySketchpadView.cpp 中的调试版本

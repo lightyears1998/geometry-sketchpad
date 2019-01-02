@@ -8,10 +8,18 @@ class Point : public Shape
 public:
 	double x, y;
 
-	Point() : x(0), y(0) {};
-	Point(double x, double y) : x(x), y(y) {};
-	Point(const Point & pt) : x(pt.x), y(pt.y) {};
-	Point(const CPoint & pt) : x(pt.x), y(pt.y) {};
+	Point() : x(0), y(0) {
+		Identifier = TEXT("µã");
+	};
+	Point(double x, double y) : x(x), y(y) {
+		Identifier = TEXT("µã");
+	};
+	Point(const Point & pt) : x(pt.x), y(pt.y) {
+		Identifier = pt.Identifier;
+	};
+	Point(const CPoint & pt) : x(pt.x), y(pt.y) {
+		Identifier = TEXT("µã");
+	};
 
 	Point& operator =(const Point & pt);
 

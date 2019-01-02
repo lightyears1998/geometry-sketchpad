@@ -11,8 +11,23 @@ class ArbitraryPolygon : public Shape
 public:
 	ObArray<Point> vertexs;
 
-	ArbitraryPolygon() : vertexs() {};
-	ArbitraryPolygon(const ObArray<Point> & arr) : vertexs(arr) {};
+	ArbitraryPolygon() : vertexs() {
+		Identifier = TEXT("多边形");
+	};
+	ArbitraryPolygon(const ObArray<Point> & arr) : vertexs(arr) {
+		switch (arr.GetCount()) {
+		case size_t(1):
+			Identifier = TEXT("点"); break;
+		case size_t(2):
+			Identifier = TEXT("线段"); break;
+		case size_t(3):
+			Identifier = TEXT("三角形"); break;
+		case size_t(4):
+			Identifier = TEXT("四边形"); break;
+		default:
+			Identifier = TEXT("多边形");
+		}
+	};
 
 	DECLARE_SERIAL(ArbitraryPolygon)
 	virtual void Serialize(CArchive &ar);

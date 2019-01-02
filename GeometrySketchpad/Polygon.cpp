@@ -6,7 +6,7 @@
 IMPLEMENT_SERIAL(ArbitraryPolygon, CObject, 1)
 void ArbitraryPolygon::Serialize(CArchive & ar)
 {
-	CObject::Serialize(ar);
+	Shape::Serialize(ar);
 
 	if (ar.IsStoring()) {  // 储存过程
 		size_t count = vertexs.GetCount();
@@ -31,6 +31,8 @@ void ArbitraryPolygon::MakeRectangle(const Point & v1, const Point & v2)
 
 	Point a(v1), b(v1.x, v2.y), c(v2), d(v2.x, v1.y);
 	vertexs.Add(a), vertexs.Add(b), vertexs.Add(c), vertexs.Add(d);
+
+	Identifier = TEXT("矩形");
 }
 
 
@@ -39,6 +41,8 @@ void ArbitraryPolygon::MakeTriangle(const Point & a, const Point & b, const Poin
 	vertexs.Clear();  // 清空原有顶点
 
 	vertexs.Add(a), vertexs.Add(b), vertexs.Add(c);
+
+	Identifier = TEXT("三角形");
 }
 
 
@@ -48,6 +52,8 @@ void ArbitraryPolygon::MakeParallelogramFromPoints(const Point & a, const Point 
 
 	const Point d(a.x + c.x - b.x, a.y + c.y - b.y);  // 计算出第四个顶点的位置
 	vertexs.Add(a), vertexs.Add(b), vertexs.Add(c), vertexs.Add(d);
+
+	Identifier = TEXT("平行四边形");
 }
 
 

@@ -18,6 +18,8 @@ public:
 
 // 操作
 public:
+	// 设置指定图形的选中状态
+	void SelectShape(size_t index, bool is_selected);
 
 // 重写
 public:
@@ -46,4 +48,7 @@ protected:
 	// 用于为搜索处理程序设置搜索内容的 Helper 函数
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
+public:
+	// 通知View类ShapeArray已经发生改变
+	void NotifyShapeArrayUpdated();
 };

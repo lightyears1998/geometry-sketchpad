@@ -10,10 +10,11 @@ public:
 	Shape() = default;
 	virtual ~Shape() = default;
 
-	bool IsSelected = true;  // 当前图形是否被选中
+	CString Identifier;   // 当前图形的一个好记的名称
+	bool IsSelected = false;  // 当前图形是否被选中
 
 	// 序列化实现
-	virtual void Serialize(CArchive &ar) = 0;
+	virtual void Serialize(CArchive &ar);
 
 	// 绘图函数
 	virtual void OnDraw(CDC* pDC) = 0;
