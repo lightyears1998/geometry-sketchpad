@@ -71,13 +71,15 @@
 #define IDM_CALC_ALL_AREA               32811
 #define ID_32812                        32812
 #define IDM_REMOVE_SELECTED             32813
+#define ID_32814                        32814
+#define IDM_STATISTICS                  32815
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        325
-#define _APS_NEXT_COMMAND_VALUE         32814
+#define _APS_NEXT_COMMAND_VALUE         32816
 #define _APS_NEXT_CONTROL_VALUE         1015
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
